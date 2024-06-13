@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { ArrowRight } from "lucide-react";
+import Line from "./Line";
 
 const Experience = () => {
   return (
@@ -27,19 +28,19 @@ const Experience = () => {
         </div>
       </div>
       <div className='w-full mx-8 my-auto'>
-        <div className='w-full h-[1px] bg-offwhite' />
+        <Line />
         <Card
           designation={"Senior Core Committee Member"}
           year={"2023 - present"}
           organisation={"CodeChef-VIT"}
         />
-        <div className='w-full h-[1px] bg-offwhite' />
+        <Line />
         <Card
           designation={"Senior Core Committee Member"}
           year={"2023 - present"}
           organisation={"CodeChef-VIT"}
         />
-        <div className='w-full h-[1px] bg-offwhite' />
+        <Line />
       </div>
     </div>
   );
