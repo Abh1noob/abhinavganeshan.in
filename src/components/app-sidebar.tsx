@@ -1,21 +1,17 @@
 "use client";
-
 import * as React from "react";
 import {
-  BookOpen,
-  Bot,
   Command,
   Frame,
   LifeBuoy,
-  Map,
   PieChart,
   Send,
-  Settings2,
-  SquareTerminal,
+  User,
+  Award,
+  Briefcase,
 } from "lucide-react";
 
 import { NavMain } from "./nav-main";
-import { NavProjects } from "./nav-projects";
 import { NavSecondary } from "./nav-secondary";
 import { NavUser } from "./nav-user";
 import {
@@ -30,124 +26,122 @@ import {
 
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    name: "Abhinav Ganeshan Kalpathy",
+    email: "abhinavganeshank@gmail.com",
+    avatar: "/avatars/abhinav.jpg",
   },
   navMain: [
     {
-      title: "Playground",
+      title: "About Me",
       url: "#",
-      icon: SquareTerminal,
+      icon: User,
       isActive: true,
       items: [
         {
-          title: "History",
+          title: "Education",
           url: "#",
         },
         {
-          title: "Starred",
+          title: "Technical Skills",
           url: "#",
         },
         {
-          title: "Settings",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Models",
-      url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
+          title: "Achievements",
           url: "#",
         },
       ],
     },
     {
-      title: "Documentation",
+      title: "Projects",
       url: "#",
-      icon: BookOpen,
+      icon: Frame,
       items: [
         {
-          title: "Introduction",
+          title: "Tribal Welfare Portal",
           url: "#",
         },
         {
-          title: "Get Started",
+          title: "3D Model Editor",
           url: "#",
         },
         {
-          title: "Tutorials",
+          title: "Fincheck Accounting",
           url: "#",
         },
         {
-          title: "Changelog",
+          title: "DEVSOC'24",
+          url: "#",
+        },
+        {
+          title: "Yantra'24 Hackathon Project",
           url: "#",
         },
       ],
     },
     {
-      title: "Settings",
+      title: "Experience",
       url: "#",
-      icon: Settings2,
+      icon: Briefcase,
       items: [
         {
-          title: "General",
+          title: "Peritys",
           url: "#",
         },
         {
-          title: "Team",
+          title: "Pinkhippo",
           url: "#",
         },
         {
-          title: "Billing",
+          title: "Stride.ai",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "Achievements",
+      url: "#",
+      icon: Award,
+      items: [
+        {
+          title: "Yantra'24 Hackathon Winner",
           url: "#",
         },
         {
-          title: "Limits",
+          title: "CodeChef-VIT Board Member",
           url: "#",
+        },
+      ],
+    },
+    {
+      title: "Contact",
+      url: "#",
+      icon: Send,
+      items: [
+        {
+          title: "Email",
+          url: "mailto:abhinavganeshank@gmail.com",
+        },
+        {
+          title: "Phone",
+          url: "tel:+919567683259",
+        },
+        {
+          title: "GitHub",
+          url: "https://github.com/Abh1noob",
         },
       ],
     },
   ],
   navSecondary: [
     {
-      title: "Support",
-      url: "#",
-      icon: LifeBuoy,
-    },
-    {
-      title: "Feedback",
-      url: "#",
-      icon: Send,
-    },
-  ],
-  projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Sales & Marketing",
+      title: "Portfolio Stats",
       url: "#",
       icon: PieChart,
     },
     {
-      name: "Travel",
+      title: "Feedback",
       url: "#",
-      icon: Map,
+      icon: LifeBuoy,
     },
   ],
 };
@@ -164,8 +158,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   <Command className="size-4" />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold">Acme Inc</span>
-                  <span className="truncate text-xs">Enterprise</span>
+                  <span className="truncate font-semibold">
+                    Abhinav Ganeshan
+                  </span>
+                  <span className="truncate text-xs">Portfolio</span>
                 </div>
               </a>
             </SidebarMenuButton>
@@ -174,7 +170,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
