@@ -9,6 +9,7 @@ import {
   User,
   Award,
   Briefcase,
+  FileLock,
 } from "lucide-react";
 
 import { NavMain } from "./nav-main";
@@ -77,6 +78,11 @@ const data = {
           url: "#",
         },
       ],
+    },
+    {
+      title: "AES-256 Encryption",
+      url: "/projects/aes",
+      icon: FileLock,
     },
     {
       title: "Experience",
