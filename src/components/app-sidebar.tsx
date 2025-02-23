@@ -1,20 +1,16 @@
 "use client";
+
 import * as React from "react";
 import {
-  Command,
-  Frame,
-  LifeBuoy,
-  PieChart,
-  Send,
   User,
-  Award,
+  Frame,
   Briefcase,
-  FileLock,
+  Award,
+  Send,
+  Code,
+  Trophy,
 } from "lucide-react";
 
-import { NavMain } from "./nav-main";
-import { NavSecondary } from "./nav-secondary";
-import { NavUser } from "./nav-user";
 import {
   Sidebar,
   SidebarContent,
@@ -24,6 +20,9 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { NavMain } from "./nav-main";
+import { NavSecondary } from "./nav-secondary";
+import { NavUser } from "./nav-user";
 
 const data = {
   user: {
@@ -40,49 +39,18 @@ const data = {
       items: [
         {
           title: "Education",
-          url: "#",
+          url: "/about/education",
         },
         {
           title: "Technical Skills",
-          url: "#",
-        },
-        {
-          title: "Achievements",
-          url: "#",
+          url: "/about/skills",
         },
       ],
     },
     {
       title: "Projects",
-      url: "#",
+      url: "/projects",
       icon: Frame,
-      items: [
-        {
-          title: "Tribal Welfare Portal",
-          url: "#",
-        },
-        {
-          title: "3D Model Editor",
-          url: "#",
-        },
-        {
-          title: "Fincheck Accounting",
-          url: "#",
-        },
-        {
-          title: "DEVSOC'24",
-          url: "#",
-        },
-        {
-          title: "Yantra'24 Hackathon Project",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "AES-256 Encryption",
-      url: "/projects/aes",
-      icon: FileLock,
     },
     {
       title: "Experience",
@@ -90,16 +58,19 @@ const data = {
       icon: Briefcase,
       items: [
         {
-          title: "Peritys",
-          url: "#",
+          title: "Peritys - SDE Intern",
+          url: "/experience/peritys",
+          desc: "Developed Project Management Portal and Landing Page for Tribal Welfare Dept., and admin dashboard for HaaNaa betting app (Jun 2024 - Present).",
         },
         {
-          title: "Pinkhippo",
-          url: "#",
+          title: "Warbler.pro - SDE Intern",
+          url: "/experience/warbler",
+          desc: "Built full-stack AI-driven social media content platform with Next.js, AWS, and Blender-based Python scripts (May 2024 - Present).",
         },
         {
-          title: "Stride.ai",
-          url: "#",
+          title: "Stride.ai - SDE Intern",
+          url: "/experience/stride",
+          desc: "Developed user-friendly NLP interfaces and standardized frontend templates (Jun 2024 - Jul 2024).",
         },
       ],
     },
@@ -109,12 +80,19 @@ const data = {
       icon: Award,
       items: [
         {
-          title: "Yantra'24 Hackathon Winner",
-          url: "#",
+          title: "Yantra'24 Central Hack Winner",
+          url: "/achievements/yantra24",
+          desc: "Developed a PWA seller app integrating ONDC with AI-based cataloging, winning best project in Good Wealth and Economic Growth track.",
         },
         {
-          title: "CodeChef-VIT Board Member",
-          url: "#",
+          title: "AWS Certified Solutions Architect - Associate",
+          url: "/achievements/aws",
+          desc: "Certified expertise in designing scalable, secure, and cost-optimized cloud solutions.",
+        },
+        {
+          title: "Projects Head, CodeChef-VIT",
+          url: "/achievements/codechef",
+          desc: "Planned and organized projects, mentored members, and ensured high code quality through PR reviews.",
         },
       ],
     },
@@ -142,12 +120,12 @@ const data = {
     {
       title: "Portfolio Stats",
       url: "#",
-      icon: PieChart,
+      icon: Trophy,
     },
     {
       title: "Feedback",
       url: "#",
-      icon: LifeBuoy,
+      icon: Code,
     },
   ],
 };
@@ -161,11 +139,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarMenuButton size="lg" asChild>
               <a href="#">
                 <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                  <Command className="size-4" />
+                  <User className="size-4" />{" "}
+                  {/* Using User icon for consistency */}
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-semibold">
-                    Abhinav Ganeshan
+                    {data.user.name}
                   </span>
                   <span className="truncate text-xs">Portfolio</span>
                 </div>
