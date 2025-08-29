@@ -8,6 +8,21 @@ const nextConfig: NextConfig = {
         destination: "/Abhinav's Resume.pdf",
         permanent: false,
       },
+      {
+        source: "/certificate/adobe",
+        destination: "/certificates/Adobe Certificate.pdf",
+        permanent: false,
+      },
+      {
+        source: "/certificate/stride",
+        destination: "/certificates/Stride Certificate.pdf",
+        permanent: false,
+      },
+      {
+        source: "/certificate/peritys",
+        destination: "/certificates/Peritys Certificate.pdf",
+        permanent: false,
+      },
     ];
   },
 };
