@@ -3,12 +3,17 @@
 import * as React from "react";
 import {
   User,
-  Frame,
+  LayoutDashboard,
+  FolderKanban,
   Briefcase,
+  FileText,
   Award,
   Send,
-  Code,
+  Github,
+  FileDown,
   Trophy,
+  MessageSquare,
+  type LucideIcon,
 } from "lucide-react";
 
 import {
@@ -24,7 +29,37 @@ import { NavMain } from "./nav-main";
 import { NavSecondary } from "./nav-secondary";
 import { NavUser } from "./nav-user";
 
-const data = {
+interface UserProfile {
+  name: string;
+  email: string;
+  avatar: string;
+}
+
+interface NavSubItem {
+  title: string;
+  url: string;
+  desc?: string;
+}
+
+interface NavItem {
+  title: string;
+  url: string;
+  icon: LucideIcon;
+  isActive?: boolean;
+  items?: NavSubItem[];
+}
+
+interface NavSecondaryItem {
+    title: string;
+    url: string;
+    icon: LucideIcon;
+}
+
+const data: {
+    user: UserProfile;
+    navMain: NavItem[];
+    navSecondary: NavSecondaryItem[];
+} = {
   user: {
     name: "Abhinav Ganeshan Kalpathy",
     email: "abhinavganeshank@gmail.com",
@@ -32,67 +67,82 @@ const data = {
   },
   navMain: [
     {
-      title: "About Me",
+      title: "Dashboard",
+      url: "/",
+      icon: LayoutDashboard,
+      isActive: true, // Set Dashboard as the default active page
+    },
+    {
+      title: "Profile",
       url: "#",
       icon: User,
-      isActive: true,
       items: [
         {
           title: "Education",
-          url: "/about/education",
+          url: "/profile/education",
         },
         {
-          title: "Technical Skills",
-          url: "/about/skills",
+          title: "Technical Stack", // Renamed for a more modern feel
+          url: "/profile/stack",
         },
       ],
     },
     {
       title: "Projects",
       url: "/projects",
-      icon: Frame,
+      icon: FolderKanban,
     },
     {
-      title: "Experience",
+      title: "Work & Leadership", // Combined section for all experience
       url: "#",
       icon: Briefcase,
       items: [
         {
-          title: "Peritys - SDE Intern",
-          url: "/experience/peritys",
-          desc: "Developed Project Management Portal and Landing Page for Tribal Welfare Dept., and admin dashboard for HaaNaa betting app (Jun 2024 - Present).",
+          title: "Adobe - Cybersecurity Intern",
+          url: "/work/adobe",
+          desc: "Developing malware detection systems using LLMs to identify vulnerable websites.",
         },
         {
           title: "Warbler.pro - SDE Intern",
-          url: "/experience/warbler",
-          desc: "Built full-stack AI-driven social media content platform with Next.js, AWS, and Blender-based Python scripts (May 2024 - Present).",
+          url: "/work/warbler",
+          desc: "Led development of an AI-driven social media content platform using Next.js and AWS.",
+        },
+        {
+          title: "Peritys - SDE Intern",
+          url: "/work/peritys",
+          desc: "Developed a Project Management Portal for the Tribal Welfare Dept., Govt. of Tamil Nadu.",
         },
         {
           title: "Stride.ai - SDE Intern",
-          url: "/experience/stride",
-          desc: "Developed user-friendly NLP interfaces and standardized frontend templates (Jun 2024 - Jul 2024).",
+          url: "/work/stride",
+          desc: "Developed user-friendly interfaces for NLP solutions and standardized frontend projects.",
+        },
+        {
+          title: "Projects Head, CodeChef-VIT", // Moved leadership role here
+          url: "/work/codechef-vit",
+          desc: "Planned projects, mentored members, and ensured high code quality through PR reviews.",
         },
       ],
     },
     {
-      title: "Achievements",
+      title: "Articles", // New section for blog posts
+      url: "/articles",
+      icon: FileText,
+    },
+    {
+      title: "Certifications & Awards", // New, dedicated section for achievements
       url: "#",
       icon: Award,
       items: [
         {
+          title: "AWS Certified Solutions Architect",
+          url: "/certifications/aws-sa",
+          desc: "Earned certification for designing scalable, secure, and cost-optimized cloud solutions.",
+        },
+        {
           title: "Yantra'24 Central Hack Winner",
-          url: "/achievements/yantra24",
-          desc: "Developed a PWA seller app integrating ONDC with AI-based cataloging, winning best project in Good Wealth and Economic Growth track.",
-        },
-        {
-          title: "AWS Certified Solutions Architect - Associate",
-          url: "/achievements/aws",
-          desc: "Certified expertise in designing scalable, secure, and cost-optimized cloud solutions.",
-        },
-        {
-          title: "Projects Head, CodeChef-VIT",
-          url: "/achievements/codechef",
-          desc: "Planned and organized projects, mentored members, and ensured high code quality through PR reviews.",
+          url: "/certifications/yantra24",
+          desc: "Won 'Best Project' in track for a PWA seller app integrating ONDC with AI.",
         },
       ],
     },
@@ -111,21 +161,32 @@ const data = {
         },
         {
           title: "GitHub",
-          url: "https://github.com/Abh1noob",
+          url: "https://github.com/abhinavganeshan",
         },
       ],
     },
   ],
+  // Secondary navigation with added Resume and Source Code links
   navSecondary: [
     {
       title: "Portfolio Stats",
-      url: "#",
+      url: "/stats",
       icon: Trophy,
     },
     {
+      title: "Resume", // Added direct link to resume
+      url: "/resume.pdf", // Link to your resume file in the /public folder
+      icon: FileDown,
+    },
+    {
+      title: "Source Code", // Added link to this portfolio's source code
+      url: "https://github.com/abhinavganeshan/portfolio", // Example URL
+      icon: Github,
+    },
+    {
       title: "Feedback",
-      url: "#",
-      icon: Code,
+      url: "/feedback",
+      icon: MessageSquare, // Using a more appropriate icon
     },
   ],
 };
@@ -136,11 +197,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild>
+            <SidebarMenuButton size="lg" asChild >
               <a href="#">
                 <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                  <User className="size-4" />{" "}
-                  {/* Using User icon for consistency */}
+                  <User className="size-4" />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-semibold">
