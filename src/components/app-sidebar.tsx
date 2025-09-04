@@ -175,7 +175,7 @@ const data: {
     },
     {
       title: "Resume", // Added direct link to resume
-      url: "/resume.pdf", // Link to your resume file in the /public folder
+      url: "/resume", // Link to your resume file in the /public folder
       icon: FileDown,
     },
     {

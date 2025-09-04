@@ -7,7 +7,7 @@ export const dashboardConfig = {
         title: "Full-Stack Developer",
         bio: "Creating scalable web applications and cloud-based solutions. Currently diving into Cybersecurity technologies.",
         location: "Vellore, Tamil Nadu, India",
-        resumeUrl: "/resume.pdf",
+        resumeUrl: "/resume",
         contact: {
             email: "abhinavganeshank@gmail.com",
             github: "https://github.com/Abh1noob",
