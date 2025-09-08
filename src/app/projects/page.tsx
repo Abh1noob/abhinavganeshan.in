@@ -1,221 +1,226 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+"use client";
+
+import { useState } from "react";
+import {
+  Calendar,
+  Code2,
+  ExternalLink,
+  Github,
+  Lock,
+  Search,
+  Users, Briefcase
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { ExternalLink, Github, Globe } from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
+import { Project, projectsConfig } from "@/config/projects";
 
-const projects = [
-  // Solo Projects (Coded Yourself)
-  {
-    title: "Cookoff24 Admin",
-    desc: "Admin dashboard for managing Cookoff ‘24 event data, including users, questions, and test cases (Next.js, assumed React/Tailwind based on CodeChef-VIT projects).",
-    github: "https://github.com/CodeChefVIT/cookoff-admin-9.0",
-    tech: "Next.js, React, Tailwind (assumed)",
-    timeline: "2024",
-    deployment: "/", // Add deployed URL if available
-    slug: "cookoff24-admin",
-  },
-  {
-    title: "Devsoc24 Landing",
-    desc: "Landing page for Devsoc ‘24, facilitating information dissemination and participant engagement (Next.js, assumed React/Tailwind based on CodeChef-VIT projects).",
-    github: "https://github.com/CodeChefVIT/DEVSOC-23-Landing",
-    tech: "Next.js, React, Tailwind (assumed)",
-    timeline: "2024",
-    deployment: "/", // Add deployed URL if available
-    slug: "devsoc24-landing",
-  },
-  {
-    title: "Devsoc24 Portal",
-    desc: "Front-end portal for Devsoc ‘24 event management, enabling seamless participant registration and coordination (Next.js, assumed React/Tailwind based on CodeChef-VIT projects).",
-    github: "https://github.com/CodeChefVIT/devsoc24-portal-fe",
-    tech: "Next.js, React, Tailwind (assumed)",
-    timeline: "2024",
-    deployment: "/", // Add deployed URL if available
-    slug: "devsoc24-portal",
-  },
-  {
-    title: "Devsoc24 Admin Portal",
-    desc: "Admin portal for managing Devsoc ‘24 event operations, including participant and content management (Next.js, assumed React/Tailwind based on CodeChef-VIT projects).",
-    github: "https://github.com/CodeChefVIT/devsoc-23-admin-portal",
-    tech: "Next.js, React, Tailwind (assumed)",
-    timeline: "2024",
-    deployment: "/", // Add deployed URL if available
-    slug: "devsoc24-admin-portal",
-  },
-  {
-    title: "icETITE'24 Conference Portal",
-    desc: "Portal for the icETITE ‘24 conference, handling registrations, schedules, and information (Next.js, assumed React/Tailwind based on CodeChef-VIT projects).",
-    github: "", // No GitHub link, will show "Private Repository"
-    tech: "Next.js, React, Tailwind (assumed)",
-    timeline: "2024",
-    deployment: "/", // Add deployed URL if available
-    slug: "icetite24-conference-portal",
-  },
-  {
-    title: "icETITE Bolt Hackathon Registration Portal",
-    desc: "Registration portal for the icETITE Bolt Hackathon, streamlining participant sign-ups and team management (Next.js, assumed React/Tailwind based on CodeChef-VIT projects).",
-    github: "", // No GitHub link, will show "Private Repository"
-    tech: "Next.js, React, Tailwind (assumed)",
-    timeline: "2024",
-    deployment: "/", // Add deployed URL if available
-    slug: "icetite-bolt-registration-portal",
-  },
-  {
-    title: "icETITE Bolt Landing Page",
-    desc: "Landing page for the icETITE Bolt Hackathon, conveying event details and attracting participants (Next.js, assumed React/Tailwind based on CodeChef-VIT projects).",
-    github: "", // No GitHub link, will show "Private Repository"
-    tech: "Next.js, React, Tailwind (assumed)",
-    timeline: "2024",
-    deployment: "/", // Add deployed URL if available
-    slug: "icetite-bolt-landing",
-  },
-  {
-    title: "icETITE Conference Landing Page",
-    desc: "Landing page for the icETITE ‘24 conference, providing event information and registration details (Next.js, assumed React/Tailwind based on CodeChef-VIT projects).",
-    github: "", // No GitHub link, will show "Private Repository"
-    tech: "Next.js, React, Tailwind (assumed)",
-    timeline: "2024",
-    deployment: "/", // Add deployed URL if available
-    slug: "icetite-conference-landing",
-  },
+const ProjectsShowcase = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
-  // Team-Led Projects (Led as Projects Head, CodeChef-VIT)
-  {
-    title: "Clueminati Portal",
-    desc: "Team-led portal for the Clueminati event, mentored juniors in development (Next.js, assumed React/Tailwind based on CodeChef-VIT projects).",
-    github: "https://github.com/CodeChefVIT/clueminati-portal-2.0",
-    tech: "Next.js, React, Tailwind (assumed)",
-    timeline: "2024",
-    deployment: "/", // Add deployed URL if available
-    slug: "clueminati-portal",
-  },
-  {
-    title: "Gravitas24 Landing",
-    desc: "Landing page for Gravitas ‘24, co-hosted with Cookoff 9.0 and Clueminati 2.0, showcasing tech events at VIT (Next.js, assumed React/Tailwind based on CodeChef-VIT projects).",
-    github: "https://github.com/CodeChefVIT/gravitas24-landing",
-    tech: "Next.js, React, Tailwind (assumed)",
-    timeline: "2024",
-    deployment: "/", // Add deployed URL if available
-    slug: "gravitas24-landing",
-  },
-  {
-    title: "VIT FFCS Helper",
-    desc: "Course planner tool for VIT students, automating and simplifying timetable creation (Next.js, assumed React/Tailwind based on CodeChef-VIT projects).",
-    github: "https://github.com/CodeChefVIT/ffcs",
-    tech: "Next.js, React, Tailwind (assumed)",
-    timeline: "2024",
-    deployment: "/", // Add deployed URL if available
-    slug: "vit-ffcs-helper",
-  },
-  {
-    title: "VIT Question Paper Bank",
-    desc: "Platform providing VIT students access to previous year question papers, led team development (Next.js, MongoDB, Cloudinary, based on resume and GitHub).",
-    github: "https://github.com/CodeChefVIT/papers-codechef",
-    tech: "Next.js, MongoDB, Cloudinary",
-    timeline: "June 2024 - Present",
-    deployment: "/", // Add deployed URL if available
-    slug: "vit-question-paper-bank",
-  },
-  {
-    title: "VIT Question Paper Bank Admin",
-    desc: "Admin dashboard for managing question papers on the VIT Question Paper Bank platform (Next.js, MongoDB, Cloudinary, based on resume and GitHub).",
-    github: "https://github.com/CodeChefVIT/papers-admin",
-    tech: "Next.js, MongoDB, Cloudinary",
-    timeline: "June 2024 - Present",
-    deployment: "/", // Add deployed URL if available
-    slug: "vit-question-paper-bank-admin",
-  },
-  {
-    title: "Cookoff24 Portal",
-    desc: "Portal for Cookoff ‘24, facilitating competitive coding event management and participant interaction (Next.js, assumed React/Tailwind based on CodeChef-VIT projects).",
-    github: "https://github.com/CodeChefVIT/cookoff-portal-9.0",
-    tech: "Next.js, React, Tailwind (assumed)",
-    timeline: "2024",
-    deployment: "/", // Add deployed URL if available
-    slug: "cookoff24-portal",
-  },
-  {
-    title: "Cookoff24 Admin",
-    desc: "Admin portal for managing Cookoff ‘24 event data, including users, questions, and test cases (Next.js, assumed React/Tailwind based on CodeChef-VIT projects).",
-    github: "https://github.com/CodeChefVIT/cookoff-admin-9.0",
-    tech: "Next.js, React, Tailwind (assumed)",
-    timeline: "2024",
-    deployment: "/", // Add deployed URL if available
-    slug: "cookoff24-admin",
-  },
-  {
-    title: "Devsoc25 Admin",
-    desc: "Admin portal for managing Devsoc ‘25 event operations, including participant and content management (Next.js, assumed React/Tailwind based on CodeChef-VIT projects).",
-    github: "https://github.com/CodeChefVIT/devsoc-admin-25",
-    tech: "Next.js, React, Tailwind (assumed)",
-    timeline: "2025",
-    deployment: "/", // Add deployed URL if available
-    slug: "devsoc25-admin",
-  },
-  {
-    title: "Devsoc25 Portal",
-    desc: "Front-end portal for Devsoc ‘25 event management, enabling seamless participant registration and coordination (Next.js, assumed React/Tailwind based on CodeChef-VIT projects).",
-    github: "https://github.com/CodeChefVIT/devsoc-portal-25",
-    tech: "Next.js, React, Tailwind (assumed)",
-    timeline: "2025",
-    deployment: "/", // Add deployed URL if available
-    slug: "devsoc25-portal",
-  },
-  {
-    title: "Devsoc25 Landing",
-    desc: "Landing page for Devsoc ‘25, conveying event details and attracting participants (Next.js, assumed React/Tailwind based on CodeChef-VIT projects).",
-    github: "https://github.com/CodeChefVIT/devsoc-landing-25",
-    tech: "Next.js, React, Tailwind (assumed)",
-    timeline: "2025",
-    deployment: "/",
-    slug: "devsoc25-landing",
-  },
-];
+  const projects = projectsConfig.projects;
 
-export default function ProjectsPage() {
+  const filteredProjects = projects.filter((project) => {
+    const matchesSearch =
+      project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      project.desc.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      project.tech.some((tech) =>
+        tech.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+
+    const matchesCategory =
+      selectedCategory === "all" || project.category === selectedCategory;
+
+    return matchesSearch && matchesCategory;
+  });
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case "active":
+        return "bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400";
+      case "completed":
+        return "bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400";
+      default:
+        return "bg-gray-100 text-gray-800 dark:bg-gray-900/20 dark:text-gray-400";
+    }
+  };
+
+  const getTypeIcon = (type: string) => {
+    switch (type) {
+      case "Personal Project":
+        return <Code2 className="h-4 w-4" />;
+      case "Team Lead":
+        return <Users className="h-4 w-4" />;
+      case "Solo Development":
+        return <Briefcase className="h-4 w-4" />;
+      default:
+        return <Code2 className="h-4 w-4" />;
+    }
+  };
+
+  const ProjectCard = ({ project }: { project: Project }) => (
+    <Card className="group hover:shadow-lg transition-all duration-300 h-full flex flex-col">
+      <CardHeader className="pb-4">
+        <div className="flex items-start justify-between gap-4">
+          <div className="space-y-2 flex-1">
+            <div className="flex items-center gap-2 flex-wrap">
+              <CardTitle className="group-hover:text-primary transition-colors text-lg">
+                {project.title}
+              </CardTitle>
+            </div>
+
+            <div className="flex items-center gap-3 text-sm text-muted-foreground">
+              <div className="flex items-center gap-1">
+                {getTypeIcon(project.type)}
+                <span>{project.type}</span>
+              </div>
+              {project.status && (
+                <div
+                  className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(
+                    project.status
+                  )}`}
+                >
+                  {project.status === "active" ? "Active" : "Completed"}
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className="flex gap-2">
+            {project.github ? (
+              <Button variant="ghost" size="icon" asChild className="h-8 w-8">
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Github className="h-4 w-4" />
+                </a>
+              </Button>
+            ) : (
+              <div className="h-8 w-8 flex items-center justify-center">
+                <Lock className="h-4 w-4 text-muted-foreground" />
+              </div>
+            )}
+            {project.deployment !== "/" && (
+              <Button variant="ghost" size="icon" asChild className="h-8 w-8">
+                <a
+                  href={project.deployment}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <ExternalLink className="h-4 w-4" />
+                </a>
+              </Button>
+            )}
+          </div>
+        </div>
+      </CardHeader>
+
+      <CardContent className="flex-1 flex flex-col">
+        <CardDescription className="leading-relaxed mb-4 flex-1">
+          {project.desc}
+        </CardDescription>
+
+        <div className="space-y-4 mt-auto">
+          <div className="flex flex-wrap gap-2">
+            {project.tech.map((tech) => (
+              <Badge key={tech} variant="secondary" className="text-xs">
+                {tech}
+              </Badge>
+            ))}
+          </div>
+
+          <div className="flex items-center justify-between pt-2 border-t">
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <Calendar className="h-4 w-4" />
+              <span>{project.timeline}</span>
+            </div>
+
+            {/* <Button variant="outline" size="sm" asChild>
+              <a href={`/projects/${project.slug}`} className="gap-2">
+                View Details
+                <ArrowUpRight className="h-3 w-3" />
+              </a>
+            </Button> */}
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+
   return (
-    <div className="p-6 space-y-6">
-      <h1 className="text-3xl font-bold">Projects</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {projects.map((project, index) => (
-          <Card key={index}>
-            <CardHeader>
-              <CardTitle>{project.title}</CardTitle>
-            </CardHeader>
-            <CardContent className="flex flex-col gap-4">
-              <div className="space-y-4">
-                <p>{project.desc}</p>
-                <p className="text-sm text-gray-500">
-                  <strong>Tech Stack:</strong> {project.tech}
-                </p>
-                <p className="text-sm text-gray-500">
-                  <strong>Timeline:</strong> {project.timeline}
-                </p>
+    <div className="min-h-screen bg-background">
+      <div className="container mx-auto p-4 sm:p-6 md:p-8 max-w-7xl">
+        <div className="mb-8">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="p-2 bg-primary/10 rounded-lg">
+              <Code2 className="h-6 w-6 text-primary" />
+            </div>
+            <div>
+              <h1 className="text-3xl font-bold">
+                {projectsConfig.header.title}
+              </h1>
+              <p className="text-muted-foreground">
+                {projectsConfig.header.description}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Search and Filter */}
+        <div className="flex flex-col sm:flex-row gap-4 mb-8">
+          <div className="relative flex-1">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Input
+              placeholder="Search projects, technologies, or descriptions..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="pl-10"
+            />
+          </div>
+        </div>
+
+        {/* Category Tabs */}
+        <Tabs
+          value={selectedCategory}
+          onValueChange={setSelectedCategory}
+          className="mb-8"
+        >
+          <TabsContent value={selectedCategory} className="mt-6">
+            {filteredProjects.length === 0 ? (
+              <Card>
+                <CardContent className="text-center py-16">
+                  <Code2 className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+                  <h3 className="text-lg font-semibold mb-2">
+                    No projects found
+                  </h3>
+                  <p className="text-muted-foreground">
+                    Try adjusting your search terms or category filter
+                  </p>
+                </CardContent>
+              </Card>
+            ) : (
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {filteredProjects.map((project, index) => (
+                  <ProjectCard key={index} project={project} />
+                ))}
               </div>
-              <div className="flex flex-row gap-4">
-                {project.github && (
-                  <Button asChild variant="outline">
-                    <Link href={project.github} target="_blank">
-                      <Github className="" />
-                    </Link>
-                  </Button>
-                )}
-                {project.deployment && (
-                  <Button asChild variant="outline">
-                    <Link href={project.deployment} target="_blank">
-                      <Globe className="" />
-                    </Link>
-                  </Button>
-                )}
-                <Button asChild>
-                  <Link href={`/projects/${project.slug}`}>
-                    <ExternalLink className="" />
-                  </Link>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
+            )}
+          </TabsContent>
+        </Tabs>
       </div>
     </div>
   );
-}
+};
+
+export default ProjectsShowcase;
