@@ -9,12 +9,14 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { dashboardConfig } from "@/config/dashboard";
 
-import { Briefcase, Code2 } from "lucide-react";
+import { Brain, Briefcase, Code2, Package } from "lucide-react";
 import React from "react";
 
 const iconMap = {
   briefcase: <Briefcase className="h-4 w-4 text-red-600 dark:text-red-400" />,
   code: <Code2 className="h-4 w-4 text-blue-600 dark:text-blue-400" />,
+  package: <Package className="h-4 w-4 text-green-600 dark:text-green-400" />,
+  brain: <Brain className="h-4 w-4 text-purple-600 dark:text-purple-400" />,
 };
 
 const CurrentWorkWidget = () => {

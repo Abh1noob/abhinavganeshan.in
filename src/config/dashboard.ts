@@ -16,6 +16,20 @@ export const dashboardConfig = {
     },
     currentWork: [
         {
+            title: "Software Engineer | Warbler.Pro",
+            description: "Developing AI-powered social media content management and Ad targeting platform",
+            tags: ["Next.js", "AWS"],
+            period: "Ongoing",
+            icon: "brain",
+        },
+        {
+            title: "Opensource Developer | TableMint",
+            description: "Building NPM package that helps developers to transform their API responses into production ready tables in no time",
+            tags: ["JavaScript", "NPM"],
+            period: "Ongoing",
+            icon: "package",
+        },
+        {
             title: "Freelance Developer | Knoos Alankaran",
             description: "Building backend infrastructure for Knoos Alankaran - an online marketplace for traditional Indian clothing",
             tags: ["GoFiber", "AWS"],
@@ -25,7 +39,7 @@ export const dashboardConfig = {
         {
             title: "Papers by CodeChef-VIT",
             description: "Managing question paper repository platform that supports VIT students throughout examination periods",
-            tags: ["Next.js", "MongoDB", "Cloudinary"],
+            tags: ["Next.js", "MongoDB", "GCP"],
             period: "Ongoing",
             icon: "code",
         },
@@ -59,28 +73,24 @@ export const dashboardConfig = {
             label: "Active Projects",
             value: "2",
             description: "In development",
-            trend: "+1 this month",
         },
         {
             icon: "briefcase",
             label: "Experience",
             value: "2+ years",
             description: "Professional development",
-            trend: "4 organizations",
         },
         {
             icon: "users",
             label: "User Reach",
             value: "40K+",
             description: "Across platforms",
-            trend: "Papers platform",
         },
         {
             icon: "zap",
             label: "Technologies",
             value: "10+",
             description: "Proficient in",
-            trend: "Continuously expanding",
         },
     ],
     projects: [
