@@ -28,7 +28,7 @@ const QuickStartWidget = () => {
             <p className="text-xs text-muted-foreground mb-1">
               {stat.description}
             </p>
-            <p className="text-xs text-green-600 font-medium">{stat.trend}</p>
+
           </CardContent>
         </Card>
       ))}
