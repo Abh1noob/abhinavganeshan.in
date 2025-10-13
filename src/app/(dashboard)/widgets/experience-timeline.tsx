@@ -24,7 +24,7 @@ const ExperienceTimelineWidget = () => {
       </CardHeader>
       <CardContent>
         <div className="space-y-6">
-          {experiences.map((exp, index) => (
+          {experiences.splice(0,3).map((exp, index) => (
             <div key={index} className="flex items-start gap-4">
               <Avatar className="h-10 w-10">
                 <AvatarFallback className="text-sm font-semibold">

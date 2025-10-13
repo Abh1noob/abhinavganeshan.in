@@ -98,6 +98,11 @@ const data: {
       icon: Briefcase,
       items: [
         {
+          title: "Complete Timeline",
+          url: "/work",
+          desc: "View my complete professional journey and current work.",
+        },
+        {
           title: "Adobe - Cybersecurity Intern",
           url: "/work/adobe",
           desc: "Developing malware detection systems using LLMs to identify vulnerable websites.",
