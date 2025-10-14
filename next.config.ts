@@ -14,9 +14,18 @@ const nextConfig: NextConfig = {
         permanent: false,
       },
       {
-        source: "/certificate/peritys",
+        source: "/resume/peritys",
         destination: "/certificates/Peritys Certificate.pdf",
         permanent: false,
+      },
+    ];
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/resume",
+        destination:
+          "https://drive.google.com/file/d/1xQ3f863AgDXsqW9NisKfZbgBO6jV4ENr/preview",
       },
     ];
   },
