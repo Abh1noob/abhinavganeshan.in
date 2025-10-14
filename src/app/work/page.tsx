@@ -9,8 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { dashboardConfig } from "@/config/dashboard";
-import { ArrowLeft, Briefcase, Calendar, MapPin, ExternalLink } from "lucide-react";
-import Link from "next/link";
+import {  Briefcase, Calendar, ExternalLink } from "lucide-react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -109,7 +108,7 @@ export default function WorkPage() {
         <section className="mt-12 pt-8 border-t">
           <Card>
             <CardHeader>
-              <CardTitle>Let's Connect</CardTitle>
+              <CardTitle>Let&pos;s Connect</CardTitle>
               <CardDescription>
                 Interested in working together or learning more about my experience?
               </CardDescription>
