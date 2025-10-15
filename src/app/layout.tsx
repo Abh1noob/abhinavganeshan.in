@@ -67,6 +67,12 @@ export default function RootLayout({
             <BreadcrumbPage>Work Timeline</BreadcrumbPage>
           </BreadcrumbItem>
         );
+      } else if (segment === "technical-stack") {
+        breadcrumbs.push(
+          <BreadcrumbItem key={path}>
+            <BreadcrumbPage>Technical Stack</BreadcrumbPage>
+          </BreadcrumbItem>
+        );
       } else if (segment.startsWith("projects/")) {
         // Extract project slug and title (you can fetch project data or map slugs to titles)
         const projectSlug = segment.replace("projects/", "");

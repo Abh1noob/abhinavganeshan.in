@@ -83,7 +83,7 @@ const data: {
         },
         {
           title: "Technical Stack", // Renamed for a more modern feel
-          url: "/profile/stack",
+          url: "/profile/technical-stack",
         },
       ],
     },
