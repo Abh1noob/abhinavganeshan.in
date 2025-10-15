@@ -160,7 +160,7 @@ const ProjectsShowcase = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto p-4 sm:p-6 md:p-8 max-w-7xl">
+      <div className="container mx-auto p-4 sm:p-6 md:p-8 ">
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
             <div className="p-2 bg-primary/10 rounded-lg">

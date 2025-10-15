@@ -9,7 +9,7 @@ import SkillsProgressWidget from "./widgets/skill-progress";
 export default function DashboardPage() {
   return (
     <div className="min-h-screen bg-background">
-      <main className="container mx-auto p-4 sm:p-6 md:p-8 max-w-7xl">
+      <main className="container mx-auto p-4 sm:p-6 md:p-8 ">
         <HeroSection />
         <QuickStartWidget />
         <CurrentWorkWidget />
