@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import { dashboardConfig } from "@/config/dashboard";
 import { TrendingUp, Briefcase } from "lucide-react";
+import Image from "next/image";
 
 const ExperienceTimelineWidget = () => {
   const experiences = dashboardConfig.experience;
@@ -26,9 +27,10 @@ const ExperienceTimelineWidget = () => {
         <div className="space-y-6">
           {experiences.splice(0,3).map((exp, index) => (
             <div key={index} className="flex items-start gap-4">
-              <Avatar className="h-10 w-10">
+              <Avatar className="h-12 w-12">
+                <AvatarImage src={exp.logo} alt={exp.company} className="p-1 " />
                 <AvatarFallback className="text-sm font-semibold">
-                  {exp.logo}
+                  {exp.logo.charAt(0)}
                 </AvatarFallback>
               </Avatar>
               <div className="flex-1 space-y-1">
@@ -60,6 +62,5 @@ const ExperienceTimelineWidget = () => {
     </Card>
   );
 };
-
 
 export default ExperienceTimelineWidget;

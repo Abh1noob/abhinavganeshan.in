@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,12 +9,14 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { dashboardConfig } from "@/config/dashboard";
-import {  Briefcase, Calendar, ExternalLink } from "lucide-react";
+import { Briefcase, Calendar, ExternalLink } from "lucide-react";
 import { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Work Timeline - Abhinav Ganeshan",
-  description: "Complete professional timeline showcasing my experience, internships, and current work projects.",
+  description:
+    "Complete professional timeline showcasing my experience, internships, and current work projects.",
 };
 
 export default function WorkPage() {
@@ -69,9 +71,10 @@ export default function WorkPage() {
               <Card key={index} className="relative">
                 <CardHeader>
                   <div className="flex items-start gap-4">
-                    <Avatar className="h-12 w-12">
-                      <AvatarFallback className="text-lg font-bold">
-                        {exp.logo}
+                    <Avatar className="h-12 w-12 overflow-hidden ">
+                      <AvatarImage src={exp.logo} alt={exp.company} className="p-1 " />
+                      <AvatarFallback className="text-sm font-semibold">
+                        {exp.company.charAt(0)}
                       </AvatarFallback>
                     </Avatar>
                     <div className="flex-1">
@@ -94,7 +97,7 @@ export default function WorkPage() {
                     {exp.description}
                   </p>
                 </CardContent>
-                
+
                 {/* Timeline connector */}
                 {index < experiences.length - 1 && (
                   <div className="absolute left-10 bottom-0 w-0.5 h-6 bg-border translate-y-full" />
@@ -108,9 +111,10 @@ export default function WorkPage() {
         <section className="mt-12 pt-8 border-t">
           <Card>
             <CardHeader>
-              <CardTitle>Let&pos;s Connect</CardTitle>
+              <CardTitle>Let&apos;s Connect</CardTitle>
               <CardDescription>
-                Interested in working together or learning more about my experience?
+                Interested in working together or learning more about my
+                experience?
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -121,9 +125,9 @@ export default function WorkPage() {
                   </a>
                 </Button>
                 <Button variant="outline" asChild>
-                  <a 
-                    href={dashboardConfig.hero.contact.linkedin} 
-                    target="_blank" 
+                  <a
+                    href={dashboardConfig.hero.contact.linkedin}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="gap-2"
                   >
@@ -132,9 +136,9 @@ export default function WorkPage() {
                   </a>
                 </Button>
                 <Button variant="outline" asChild>
-                  <a 
-                    href={dashboardConfig.hero.contact.github} 
-                    target="_blank" 
+                  <a
+                    href={dashboardConfig.hero.contact.github}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="gap-2"
                   >
