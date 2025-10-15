@@ -11,7 +11,6 @@ import { Badge } from "@/components/ui/badge";
 import { dashboardConfig } from "@/config/dashboard";
 import { Briefcase, Calendar, ExternalLink } from "lucide-react";
 import { Metadata } from "next";
-import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Work Timeline - Abhinav Ganeshan",
@@ -72,7 +71,7 @@ export default function WorkPage() {
                 <CardHeader>
                   <div className="flex items-start gap-4">
                     <Avatar className="h-12 w-12 overflow-hidden ">
-                      <AvatarImage src={exp.logo} alt={exp.company} className="p-1 " />
+                      <AvatarImage src={exp.logo} alt={exp.company} className="p-1 bg-white scale-110" />
                       <AvatarFallback className="text-sm font-semibold">
                         {exp.company.charAt(0)}
                       </AvatarFallback>
