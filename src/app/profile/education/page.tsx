@@ -4,7 +4,6 @@ import {
   Calendar,
   MapPin,
   Award,
-  Book,
   BookCopy,
 } from "lucide-react";
 import { education } from "@/config/education";

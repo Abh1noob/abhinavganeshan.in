@@ -1,11 +1,13 @@
 import React from "react";
 
-const Page = ({ params }: { params: { company: string } }) => {
+const Page = async ({ params }: { params: Promise<{ company: string }> }) => {
+  const { company } = await params;
+
   return (
     <iframe
-      src={`/certificate/${params.company}`}
+      src={`/certificate/${company}`}
       className="w-full h-[92vh] border-0"
-      title={`${params.company} certificate`}
+      title={`${company} certificate`}
     />
   );
 };
