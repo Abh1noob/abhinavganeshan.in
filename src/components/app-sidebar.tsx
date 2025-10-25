@@ -50,15 +50,15 @@ interface NavItem {
 }
 
 interface NavSecondaryItem {
-    title: string;
-    url: string;
-    icon: LucideIcon;
+  title: string;
+  url: string;
+  icon: LucideIcon;
 }
 
 const data: {
-    user: UserProfile;
-    navMain: NavItem[];
-    navSecondary: NavSecondaryItem[];
+  user: UserProfile;
+  navMain: NavItem[];
+  navSecondary: NavSecondaryItem[];
 } = {
   user: {
     name: "Abhinav Ganeshan Kalpathy",
@@ -166,18 +166,18 @@ const data: {
         },
         {
           title: "GitHub",
-          url: "https://github.com/abhinavganeshan",
+          url: "https://github.com/Abh1noob",
         },
       ],
     },
   ],
   // Secondary navigation with added Resume and Source Code links
   navSecondary: [
-    {
-      title: "Portfolio Stats",
-      url: "/stats",
-      icon: Trophy,
-    },
+    // {
+    //   title: "Portfolio Stats",
+    //   url: "/stats",
+    //   icon: Trophy,
+    // },
     {
       title: "Resume", // Added direct link to resume
       url: "/resume", // Link to your resume file in the /public folder
@@ -185,14 +185,14 @@ const data: {
     },
     {
       title: "Source Code", // Added link to this portfolio's source code
-      url: "https://github.com/abhinavganeshan/portfolio", // Example URL
+      url: "https://github.com/Abh1noob/abhinavganeshan.in", // Example URL
       icon: Github,
     },
-    {
-      title: "Feedback",
-      url: "/feedback",
-      icon: MessageSquare, // Using a more appropriate icon
-    },
+    // {
+    //   title: "Feedback",
+    //   url: "/feedback",
+    //   icon: MessageSquare, // Using a more appropriate icon
+    // },
   ],
 };
 
@@ -202,7 +202,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild >
+            <SidebarMenuButton size="lg" asChild>
               <a href="#">
                 <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
                   <User className="size-4" />
