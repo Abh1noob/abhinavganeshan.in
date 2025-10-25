@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import { dashboardConfig } from "@/config/dashboard";
 import { TrendingUp, Briefcase } from "lucide-react";
+import Link from "next/link";
 
 const ExperienceTimelineWidget = () => {
   const experiences = dashboardConfig.experience;
@@ -55,10 +56,10 @@ const ExperienceTimelineWidget = () => {
         </div>
         <div className="mt-6 pt-4 border-t">
           <Button variant="outline" className="w-full" asChild>
-            <a href="/work" className="gap-2">
+            <Link href="/work" className="gap-2">
               <Briefcase className="h-4 w-4" />
               View Complete Timeline
-            </a>
+            </Link>
           </Button>
         </div>
       </CardContent>
