@@ -9,12 +9,17 @@ const nextConfig: NextConfig = {
         permanent: false,
       },
       {
+        source: "/certificate/warbler",
+        destination: "/certificates/Warbler Certificate.pdf",
+        permanent: false,
+      },
+      {
         source: "/certificate/stride",
         destination: "/certificates/Stride Certificate.pdf",
         permanent: false,
       },
       {
-        source: "/resume/peritys",
+        source: "/certificate/peritys",
         destination: "/certificates/Peritys Certificate.pdf",
         permanent: false,
       },
