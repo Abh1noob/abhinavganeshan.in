@@ -12,6 +12,9 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import { CommandMenu } from "@/components/command-menu";
+import { Toaster } from "sonner";
+import { StartupToast } from "@/components/startup-toast";
 import React from "react";
 
 // Fonts
@@ -42,6 +45,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>
+          <CommandMenu />
+          <StartupToast />
+          <Toaster />
           <SidebarProvider>
             <AppSidebar />
             <SidebarInset>
