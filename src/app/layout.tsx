@@ -16,6 +16,8 @@ import { CommandMenu } from "@/components/command-menu";
 import { Toaster } from "sonner";
 import { StartupToast } from "@/components/startup-toast";
 import React from "react";
+import Head from "next/head";
+import Script from "next/script";
 
 // Fonts
 const geistSans = Geist({
@@ -44,6 +46,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+      <Head>
+          <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9007034455335797"
+            crossOrigin="anonymous"></Script>
+        </Head>
         <ThemeProvider>
           <CommandMenu />
           <StartupToast />
