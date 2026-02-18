@@ -40,17 +40,7 @@ export default async function ArticlePage({ params }: Props) {
 
     return (
         <div className="min-h-screen bg-background pb-20">
-            {/* Navigation Bar */}
-            <div className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-                <div className="container max-w-4xl mx-auto flex h-14 items-center px-4">
-                    <Button asChild variant="ghost" size="sm" className="-ml-3 gap-1 text-muted-foreground hover:text-foreground">
-                        <Link href="/articles">
-                            <ArrowLeft className="h-4 w-4" />
-                            Back to Articles
-                        </Link>
-                    </Button>
-                </div>
-            </div>
+            {/* Navigation Bar removed in favor of global breadcrumbs */}
 
             <article className="container max-w-4xl mx-auto px-4 py-10 selection:bg-primary/20">
                 {/* Header Section */}

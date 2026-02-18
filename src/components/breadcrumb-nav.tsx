@@ -22,10 +22,17 @@ export function BreadcrumbNav() {
     let path = "";
     for (const segment of pathSegments) {
       path += `/${segment}`;
+
+      const isLast = path === pathname;
+
       if (segment === "projects") {
         breadcrumbs.push(
           <BreadcrumbItem key={path}>
-            <BreadcrumbLink href={path}>Projects</BreadcrumbLink>
+            {isLast ? (
+              <BreadcrumbPage>Projects</BreadcrumbPage>
+            ) : (
+              <BreadcrumbLink href={path}>Projects</BreadcrumbLink>
+            )}
           </BreadcrumbItem>
         );
       } else if (segment === "work") {
@@ -40,16 +47,39 @@ export function BreadcrumbNav() {
             <BreadcrumbPage>Technical Stack</BreadcrumbPage>
           </BreadcrumbItem>
         );
-      } else if (segment.startsWith("projects/")) {
-        // Extract project slug and title (you can fetch project data or map slugs to titles)
-        const projectSlug = segment.replace("projects/", "");
+      } else if (path.startsWith("/projects/") && segment !== "projects") {
+        const projectSlug = segment;
         const projectTitle = projectSlug
           .split("-")
           .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-          .join(" "); // Capitalize and join for readable title (e.g., "papers-codechef" → "Papers Codechef")
+          .join(" ");
         breadcrumbs.push(
           <BreadcrumbItem key={path}>
             <BreadcrumbPage>{projectTitle}</BreadcrumbPage>
+          </BreadcrumbItem>
+        );
+      } else if (segment === "articles") {
+        breadcrumbs.push(
+          <BreadcrumbItem key={path}>
+            {isLast ? (
+              <BreadcrumbPage>Articles</BreadcrumbPage>
+            ) : (
+              <BreadcrumbLink href="/articles">Articles</BreadcrumbLink>
+            )}
+          </BreadcrumbItem>
+        );
+      } else if (path.startsWith("/articles/") && segment !== "articles") {
+        const articleSlug = segment;
+        const formattedTitle = articleSlug
+          .split("-")
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(" ");
+
+        breadcrumbs.push(
+          <BreadcrumbItem key={path}>
+            <BreadcrumbPage className="line-clamp-1 max-w-[200px]">
+              {formattedTitle}
+            </BreadcrumbPage>
           </BreadcrumbItem>
         );
       }
