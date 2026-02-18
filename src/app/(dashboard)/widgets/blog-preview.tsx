@@ -8,17 +8,22 @@ import {
   CardContent,
 } from "@/components/ui/card";
 import { FileText, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
+import { getPosts } from "@/lib/hashnode";
 
-const BlogPreviewWidget = () => {
-  const latestPost = {
-    title: "Using S3 as Extended Storage for Next.js with Clean URLs",
-    excerpt:
-      "Learn how to leverage Amazon S3 for scalable file storage in Next.js applications while maintaining clean, SEO-friendly URLs.",
-    publishedAt: "Apr 20, 2025",
-    readTime: "2 min read",
-    url: "https://abh1noob.hashnode.dev/using-s3-as-extended-storage-for-nextjs-with-clean-urls",
-    tags: ["Next.js", "AWS S3", "Web Development"],
-  };
+const BlogPreviewWidget = async () => {
+  const { edges } = await getPosts(1);
+  const latestPost = edges[0]?.node;
+
+  if (!latestPost) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle>No Articles Found</CardTitle>
+        </CardHeader>
+      </Card>
+    )
+  }
 
   return (
     <Card>
@@ -36,24 +41,30 @@ const BlogPreviewWidget = () => {
           <div className="space-y-3">
             <div className="flex items-center gap-2 text-xs text-muted-foreground">
               <span className="bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400 px-2 py-1 rounded-full">
-                {latestPost.publishedAt}
+                {new Date(latestPost.publishedAt).toLocaleDateString("en-US", {
+                  month: "short",
+                  day: "numeric",
+                  year: "numeric"
+                })}
               </span>
               <span>•</span>
-              <span>{latestPost.readTime}</span>
+              <span>{latestPost.readTimeInMinutes} min read</span>
             </div>
 
-            <h4 className="font-semibold leading-tight hover:text-primary transition-colors cursor-pointer">
-              {latestPost.title}
-            </h4>
+            <Link href={`/articles/${latestPost.slug}`} className="block">
+              <h4 className="font-semibold leading-tight hover:text-primary transition-colors cursor-pointer">
+                {latestPost.title}
+              </h4>
+            </Link>
 
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              {latestPost.excerpt}
+            <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
+              {latestPost.brief}
             </p>
 
             <div className="flex flex-wrap gap-2">
-              {latestPost.tags.map((tag) => (
-                <Badge key={tag} variant="secondary" className="text-xs">
-                  {tag}
+              {latestPost.tags?.map((tag) => (
+                <Badge key={tag.name} variant="secondary" className="text-xs">
+                  {tag.name}
                 </Badge>
               ))}
             </div>
@@ -61,23 +72,17 @@ const BlogPreviewWidget = () => {
 
           <div className="flex gap-3 pt-2">
             <Button size="sm" asChild>
-              <a
-                href={latestPost.url}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href={`/articles/${latestPost.slug}`}
                 className="gap-2"
               >
                 Read Article <ArrowUpRight className="h-3 w-3" />
-              </a>
+              </Link>
             </Button>
             <Button variant="outline" size="sm" asChild>
-              <a
-                href="https://abh1noob.hashnode.dev"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link href="/articles">
                 View Blog
-              </a>
+              </Link>
             </Button>
           </div>
         </div>
