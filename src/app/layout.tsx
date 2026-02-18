@@ -16,7 +16,6 @@ import { CommandMenu } from "@/components/command-menu";
 import { Toaster } from "sonner";
 import { StartupToast } from "@/components/startup-toast";
 import React from "react";
-import Head from "next/head";
 import Script from "next/script";
 
 // Fonts
@@ -46,20 +45,27 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Head>
-          <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9007034455335797"
-            crossOrigin="anonymous"></Script>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9007034455335797"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
 
-          <Script async src="https://www.googletagmanager.com/gtag/js?id=G-7Z2BVRYHGN"></Script>
-          <Script>{`
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-7Z2BVRYHGN"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
 
-                  gtag('config', 'G-7Z2BVRYHGN');
-                `}
-          </Script>
-        </Head>
+            gtag('config', 'G-7Z2BVRYHGN');
+          `}
+        </Script>
         <ThemeProvider>
           <CommandMenu />
           <StartupToast />
