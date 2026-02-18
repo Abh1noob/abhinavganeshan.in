@@ -122,12 +122,12 @@ export const sidebarData: {
       icon: Award,
       items: [
         {
-          title: "AWS Certified Solutions Architect",
+          title: "AWS SAA",
           url: "/certifications/aws-sa",
           desc: "Earned certification for designing scalable, secure, and cost-optimized cloud solutions.",
         },
         {
-          title: "Yantra'24 Central Hack Winner",
+          title: "Yantra'24",
           url: "/certifications/yantra24",
           desc: "Won 'Best Project' in track for a PWA seller app integrating ONDC with AI.",
         },
@@ -145,6 +145,14 @@ export const sidebarData: {
         {
           title: "GitHub",
           url: "https://github.com/Abh1noob",
+        },
+        {
+          title: "LinkedIn",
+          url: "https://www.linkedin.com/in/abhinavganeshan/",
+        },
+        {
+          title: "Twitter",
+          url: "https://twitter.com/Abh1noob",
         },
       ],
     },
