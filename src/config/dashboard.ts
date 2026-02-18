@@ -12,6 +12,7 @@ export const dashboardConfig = {
             email: "abhinavganeshank@gmail.com",
             github: "https://github.com/Abh1noob",
             linkedin: "https://www.linkedin.com/in/abhinav-gk/",
+            x: "https://x.com/Abh1noob",
         },
     },
     currentWork: [

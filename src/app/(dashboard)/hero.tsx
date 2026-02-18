@@ -1,4 +1,4 @@
-import { Download, Github, Linkedin, Mail, MapPin } from "lucide-react";
+import { Download, Github, Linkedin, Mail, MapPin, Twitter, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import React from "react";
@@ -61,6 +61,15 @@ const HeroSection = () => {
               rel="noopener noreferrer"
             >
               <Linkedin className="h-4 w-4" />
+            </a>
+          </Button>
+          <Button variant="ghost" size="icon" asChild>
+            <a
+              href={hero.contact.x}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <X className="h-4 w-4" />
             </a>
           </Button>
         </div>
