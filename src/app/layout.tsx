@@ -46,9 +46,19 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-      <Head>
+        <Head>
           <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9007034455335797"
             crossOrigin="anonymous"></Script>
+
+          <Script async src="https://www.googletagmanager.com/gtag/js?id=G-7Z2BVRYHGN"></Script>
+          <Script>{`
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+
+                  gtag('config', 'G-7Z2BVRYHGN');
+                `}
+          </Script>
         </Head>
         <ThemeProvider>
           <CommandMenu />
