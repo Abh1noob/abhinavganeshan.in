@@ -28,7 +28,7 @@ export function ProjectDetails({ project }: ProjectDetailsProps) {
         <SheetContent className="overflow-y-auto sm:max-w-xl">
             <SheetHeader>
                 <SheetTitle className="text-2xl font-bold">{project.title}</SheetTitle>
-                <SheetDescription>
+                <SheetDescription asChild>
                     <div className="flex flex-wrap gap-2 mt-2 mb-4">
                         <Badge
                             variant="outline"
