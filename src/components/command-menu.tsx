@@ -11,6 +11,7 @@ import {
     Github,
     Linkedin,
     Copy,
+    X,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
@@ -25,6 +26,7 @@ import {
     CommandSeparator,
     CommandShortcut,
 } from "@/components/ui/command";
+import { dashboardConfig } from "@/config/dashboard";
 
 export function CommandMenu() {
     const [open, setOpen] = React.useState(false);
@@ -81,7 +83,7 @@ export function CommandMenu() {
                             onSelect={() =>
                                 runCommand(() =>
                                     window.open(
-                                        "https://github.com/Abh1noob",
+                                        dashboardConfig.hero.contact.github,
                                         "_blank"
                                     )
                                 )
@@ -93,7 +95,7 @@ export function CommandMenu() {
                         <CommandItem
                             onSelect={() =>
                                 runCommand(() =>
-                                    window.open("https://linkedin.com/in/abhinav-ganeshan-kalpathy-532677229/", "_blank")
+                                    window.open(dashboardConfig.hero.contact.linkedin, "_blank")
                                 )
                             }
                         >
@@ -103,7 +105,7 @@ export function CommandMenu() {
                         <CommandItem
                             onSelect={() => {
                                 runCommand(() => {
-                                    navigator.clipboard.writeText("abhinavganeshank@gmail.com");
+                                    navigator.clipboard.writeText(dashboardConfig.hero.contact.email);
                                 })
                             }}
                         >

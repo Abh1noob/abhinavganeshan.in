@@ -1,4 +1,4 @@
-import { Download, Github, Linkedin, Mail, MapPin, Twitter, X } from "lucide-react";
+import { Download, Github, Linkedin, Mail, MapPin, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import React from "react";
