@@ -38,13 +38,32 @@ export function BreadcrumbNav() {
       } else if (segment === "work") {
         breadcrumbs.push(
           <BreadcrumbItem key={path}>
-            <BreadcrumbPage>Work Timeline</BreadcrumbPage>
+            {isLast ? (
+              <BreadcrumbPage>Work Timeline</BreadcrumbPage>
+            ) : (
+              <BreadcrumbLink href="/work">Work Timeline</BreadcrumbLink>
+            )}
+          </BreadcrumbItem>
+        );
+      } else if (segment === "profile") {
+        // "profile" is never a final destination — skip rendering it as a standalone crumb
+      } else if (segment === "education") {
+        breadcrumbs.push(
+          <BreadcrumbItem key={path}>
+            <BreadcrumbPage>Education</BreadcrumbPage>
           </BreadcrumbItem>
         );
       } else if (segment === "technical-stack") {
         breadcrumbs.push(
           <BreadcrumbItem key={path}>
-            <BreadcrumbPage>Technical Stack</BreadcrumbPage>
+            <BreadcrumbPage>Skills & Technologies</BreadcrumbPage>
+          </BreadcrumbItem>
+        );
+      } else if (path.startsWith("/work/") && segment !== "work") {
+        const companyName = segment.charAt(0).toUpperCase() + segment.slice(1);
+        breadcrumbs.push(
+          <BreadcrumbItem key={path}>
+            <BreadcrumbPage>{companyName} — Certificate</BreadcrumbPage>
           </BreadcrumbItem>
         );
       } else if (path.startsWith("/projects/") && segment !== "projects") {

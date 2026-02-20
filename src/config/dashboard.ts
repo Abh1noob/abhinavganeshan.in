@@ -3,7 +3,7 @@ export const dashboardConfig = {
         avatar: "/avatars/Abh1noob.jpg",
         avatarFallback: "AG",
         status: "Available for new roles",
-        name: "Abhinav Ganeshan",
+        name: "Abhinav Ganeshan Kalpathy",
         title: "Full-Stack Developer",
         bio: "Building scalable web apps and cloud solutions. Currently exploring Cybersecurity.",
         location: "Vellore, Tamil Nadu, India",
@@ -61,6 +61,7 @@ export const dashboardConfig = {
             period: "May - Jul 2025",
             description: "Developed LLM-powered JavaScript malware detection tools to enhance web security.",
             logo: "/logo/adobe.png",
+            certificateSlug: "adobe",
         },
         {
             company: "Warbler.Pro",
@@ -68,6 +69,7 @@ export const dashboardConfig = {
             period: "May 2024 - Apr 2025",
             description: "Led development of an AI-based social media and ad management platform.",
             logo: "/logo/warbler.png",
+            certificateSlug: "warbler",
         },
         {
             company: "Peritys",
@@ -75,6 +77,7 @@ export const dashboardConfig = {
             period: "Jun 2024 - Mar 2025",
             description: "Built a project portal for the Tribal Welfare Dept, Tamil Nadu, with multi-language support.",
             logo: "/logo/peritys.png",
+            certificateSlug: "peritys",
         },
         {
             company: "StreetFlux",
@@ -96,6 +99,7 @@ export const dashboardConfig = {
             period: "Jun 2024 - Jul 2024",
             description: "Built user interfaces for NLP solutions, improving user experience.",
             logo: "/logo/stride.png",
+            certificateSlug: "stride",
         },
         {
             company: "Fincheck Accounting and LLC",
@@ -152,7 +156,7 @@ export const dashboardConfig = {
             status: "Recently Completed",
             statusColor:
                 "bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400",
-            liveUrl: "#",
+            liveUrl: "https://github.com/Abh1noob/trader-pro",
             caseStudyUrl: "/projects/trader-pro",
             impact: "Simulates live markets",
         },

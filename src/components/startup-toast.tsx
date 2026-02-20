@@ -26,7 +26,7 @@ export function StartupToast() {
 
         // Small delay to ensure UI is ready and it doesn't feel too abrupt
         setTimeout(() => {
-            toast.info(`Press ${shortcut} to open command palette`);
+            toast.info(`Press ${shortcut} to quickly navigate anywhere on this site`);
             hasShownToast.current = true;
         }, 1000);
 

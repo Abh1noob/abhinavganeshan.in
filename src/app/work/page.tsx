@@ -9,7 +9,8 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { dashboardConfig } from "@/config/dashboard";
-import { Briefcase, Calendar, ExternalLink } from "lucide-react";
+import { Award, Briefcase, Calendar, ExternalLink } from "lucide-react";
+import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -92,9 +93,17 @@ export default function WorkPage() {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed mb-4">
                     {exp.description}
                   </p>
+                  {exp.certificateSlug && (
+                    <Button variant="outline" size="sm" asChild>
+                      <Link href={`/work/${exp.certificateSlug}`} className="gap-2">
+                        <Award className="h-4 w-4" />
+                        View Certificate
+                      </Link>
+                    </Button>
+                  )}
                 </CardContent>
 
                 {/* Timeline connector */}

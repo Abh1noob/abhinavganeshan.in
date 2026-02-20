@@ -23,7 +23,7 @@ export const projectsConfig = {
       github: "https://github.com/Abh1noob/trader-pro",
       tech: ["Next.js", "Go", "PostgreSQL", "AWS", "FastAPI"],
       timeline: "April 2025",
-      deployment: "#",
+      deployment: "https://github.com/Abh1noob/trader-pro",
       slug: "trader-pro",
       category: "featured",
       type: "Personal Project",

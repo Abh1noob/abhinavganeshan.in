@@ -12,6 +12,10 @@ import {
     Linkedin,
     Copy,
     X,
+    Briefcase,
+    GraduationCap,
+    Code,
+    FileDown,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
@@ -27,6 +31,7 @@ import {
     CommandShortcut,
 } from "@/components/ui/command";
 import { dashboardConfig } from "@/config/dashboard";
+import { toast } from "sonner";
 
 export function CommandMenu() {
     const [open, setOpen] = React.useState(false);
@@ -52,17 +57,20 @@ export function CommandMenu() {
 
     return (
         <>
-            <div className="fixed bottom-4 right-4 z-50 flex items-center gap-2 rounded-lg border bg-background px-3 py-1.5 text-xs font-medium text-muted-foreground shadow-sm xl:hidden">
+            <button
+                onClick={() => setOpen(true)}
+                className="fixed bottom-4 right-4 z-50 flex items-center gap-2 rounded-lg border bg-background px-3 py-1.5 text-xs font-medium text-muted-foreground shadow-sm xl:hidden cursor-pointer hover:bg-accent transition-colors"
+            >
                 <span className="text-xs">⌘K</span>
-            </div>
+            </button>
             <CommandDialog open={open} onOpenChange={setOpen}>
                 <CommandInput placeholder="Type a command or search..." />
                 <CommandList>
                     <CommandEmpty>No results found.</CommandEmpty>
-                    <CommandGroup heading="Suggestions">
+                    <CommandGroup heading="Pages">
                         <CommandItem onSelect={() => runCommand(() => router.push("/"))}>
                             <Home className="mr-2 h-4 w-4" />
-                            <span>Dashboard</span>
+                            <span>Overview</span>
                         </CommandItem>
                         <CommandItem
                             onSelect={() => runCommand(() => router.push("/projects"))}
@@ -71,10 +79,34 @@ export function CommandMenu() {
                             <span>Projects</span>
                         </CommandItem>
                         <CommandItem
+                            onSelect={() => runCommand(() => router.push("/work"))}
+                        >
+                            <Briefcase className="mr-2 h-4 w-4" />
+                            <span>Work & Experience</span>
+                        </CommandItem>
+                        <CommandItem
                             onSelect={() => runCommand(() => router.push("/articles"))}
                         >
                             <FileText className="mr-2 h-4 w-4" />
                             <span>Articles</span>
+                        </CommandItem>
+                        <CommandItem
+                            onSelect={() => runCommand(() => router.push("/profile/education"))}
+                        >
+                            <GraduationCap className="mr-2 h-4 w-4" />
+                            <span>Education</span>
+                        </CommandItem>
+                        <CommandItem
+                            onSelect={() => runCommand(() => router.push("/profile/technical-stack"))}
+                        >
+                            <Code className="mr-2 h-4 w-4" />
+                            <span>Skills & Technologies</span>
+                        </CommandItem>
+                        <CommandItem
+                            onSelect={() => runCommand(() => router.push("/resume"))}
+                        >
+                            <FileDown className="mr-2 h-4 w-4" />
+                            <span>Resume</span>
                         </CommandItem>
                     </CommandGroup>
                     <CommandSeparator />
@@ -106,6 +138,7 @@ export function CommandMenu() {
                             onSelect={() => {
                                 runCommand(() => {
                                     navigator.clipboard.writeText(dashboardConfig.hero.contact.email);
+                                    toast("Email copied to clipboard");
                                 })
                             }}
                         >

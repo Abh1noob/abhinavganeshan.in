@@ -13,6 +13,7 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { CommandMenu } from "@/components/command-menu";
+import { SearchTrigger } from "@/components/search-trigger";
 import { Toaster } from "sonner";
 import { StartupToast } from "@/components/startup-toast";
 import React from "react";
@@ -30,7 +31,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Abhinav Ganeshan Portfolio",
+  title: "Abhinav Ganeshan's Portfolio",
   description:
     "Portfolio showcasing Abhinav Ganeshan's web development projects and experience.",
 };
@@ -79,7 +80,8 @@ export default function RootLayout({
                   <Separator orientation="vertical" className="mr-2 h-4" />
                   <BreadcrumbNav />
                 </div>
-                <div className="px-4">
+                <div className="flex items-center gap-2 px-4">
+                  <SearchTrigger />
                   <ThemeToggle />
                 </div>
               </header>

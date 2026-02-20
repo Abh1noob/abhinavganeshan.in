@@ -4,7 +4,6 @@ import {
   FolderKanban,
   Briefcase,
   FileText,
-  Award,
   Send,
   Github,
   FileDown,
@@ -64,7 +63,7 @@ export const sidebarData: {
           url: "/profile/education",
         },
         {
-          title: "Technical Stack",
+          title: "Skills & Technologies",
           url: "/profile/technical-stack",
         },
       ],
@@ -76,62 +75,13 @@ export const sidebarData: {
     },
     {
       title: "Work & Leadership",
-      url: "#",
+      url: "/work",
       icon: Briefcase,
-      items: [
-        {
-          title: "Complete Timeline",
-          url: "/work",
-          desc: "View my complete professional journey and current work.",
-        },
-        {
-          title: "Adobe - Cybersecurity Intern",
-          url: "/work/adobe",
-          desc: "Developing malware detection systems using LLMs to identify vulnerable websites.",
-        },
-        {
-          title: "Warbler.pro - SDE Intern",
-          url: "/work/warbler",
-          desc: "Led development of an AI-driven social media content platform using Next.js and AWS.",
-        },
-        {
-          title: "Peritys - SDE Intern",
-          url: "/work/peritys",
-          desc: "Developed a Project Management Portal for the Tribal Welfare Dept., Govt. of Tamil Nadu.",
-        },
-        {
-          title: "Stride.ai - SDE Intern",
-          url: "/work/stride",
-          desc: "Developed user-friendly interfaces for NLP solutions and standardized frontend projects.",
-        },
-        {
-          title: "Projects Head, CodeChef-VIT",
-          url: "/work/codechef-vit",
-          desc: "Planned projects, mentored members, and ensured high code quality through PR reviews.",
-        },
-      ],
     },
     {
       title: "Articles",
       url: "/articles",
       icon: FileText,
-    },
-    {
-      title: "Certifications & Awards",
-      url: "#",
-      icon: Award,
-      items: [
-        {
-          title: "AWS SAA",
-          url: "/certifications/aws-sa",
-          desc: "Earned certification for designing scalable, secure, and cost-optimized cloud solutions.",
-        },
-        {
-          title: "Yantra'24",
-          url: "/certifications/yantra24",
-          desc: "Won 'Best Project' in track for a PWA seller app integrating ONDC with AI.",
-        },
-      ],
     },
     {
       title: "Contact",

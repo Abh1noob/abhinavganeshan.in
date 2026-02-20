@@ -126,6 +126,54 @@
   }
 }
 
+@keyframes banner-aurora {
+  0% {
+    background-position: 0% 0%, 100% 100%, 50% 0%;
+  }
+
+  50% {
+    background-position: 100% 100%, 0% 0%, 50% 100%;
+  }
+
+  100% {
+    background-position: 0% 0%, 100% 100%, 50% 0%;
+  }
+}
+
+.hero-banner {
+  position: relative;
+  background-color: var(--background);
+  background-image:
+    radial-gradient(ellipse at 0% 0%, oklch(0.9 0 0 / 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 100% 100%, oklch(0.6 0 0 / 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 0%, oklch(1 0 0 / 0.15) 0%, transparent 60%);
+  background-size: 200% 200%, 200% 200%, 200% 200%;
+  animation: banner-aurora 25s ease infinite alternate;
+  overflow: hidden;
+  box-shadow: inset 0 -40px 40px -20px var(--card);
+}
+
+.hero-banner::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background-size: 32px 32px;
+  background-image:
+    linear-gradient(to right, oklch(0.5 0 0 / 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(0.5 0 0 / 0.1) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse at center, black 10%, transparent 80%);
+  z-index: 1;
+}
+
+.hero-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.15'/%3E%3C/svg%3E");
+  z-index: 2;
+  pointer-events: none;
+}
+
 @layer utilities {
   .prose pre {
     @apply bg-muted/50 border border-border rounded-lg p-4 overflow-x-auto my-6;

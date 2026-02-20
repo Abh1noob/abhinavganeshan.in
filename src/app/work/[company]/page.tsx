@@ -14,11 +14,13 @@ const Page = async ({ params }: { params: Promise<{ company: string }> }) => {
   const { company } = await params;
 
   return (
-    <iframe
-      src={`/certificate/${company}`}
-      className="w-full h-[92vh] border-0"
-      title={`${company} certificate`}
-    />
+    <div className="-mx-5 overflow-hidden">
+      <iframe
+        src={`/certificate/${company}`}
+        className="w-full h-[calc(100vh-4rem)] border-0"
+        title={`${company} certificate`}
+      />
+    </div>
   );
 };
 
