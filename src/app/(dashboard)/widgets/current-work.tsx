@@ -10,6 +10,7 @@ import { Separator } from "@/components/ui/separator";
 import { dashboardConfig } from "@/config/dashboard";
 
 import { Brain, Briefcase, Code2, Package } from "lucide-react";
+import Image from "next/image";
 import React from "react";
 
 const iconMap = {
@@ -36,8 +37,12 @@ const CurrentWorkWidget = () => {
           {dashboardConfig.currentWork.map((work, index) => (
             <React.Fragment key={index}>
               <div className="flex items-start gap-4">
-                <div className={`mt-1 p-2 ${work.icon === 'briefcase' ? 'bg-red-100 dark:bg-red-900/20' : 'bg-blue-100 dark:bg-blue-900/20'} rounded-lg`}>
-                  {iconMap[work.icon as keyof typeof iconMap]}
+                <div className={`mt-1 p-2 ${'logo' in work && work.logo ? 'bg-transparent' : work.icon === 'briefcase' ? 'bg-red-100 dark:bg-red-900/20' : 'bg-blue-100 dark:bg-blue-900/20'} rounded-lg`}>
+                  {'logo' in work && work.logo ? (
+                    <Image src={work.logo} alt={work.title} width={24} height={24} className="rounded" />
+                  ) : (
+                    iconMap[work.icon as keyof typeof iconMap]
+                  )}
                 </div>
                 <div className="flex-1">
                   <h4 className="font-semibold">{work.title}</h4>

@@ -17,6 +17,14 @@ export const dashboardConfig = {
     },
     currentWork: [
         {
+            title: "sprout.",
+            description: "Building an Android app for paper trading on real NSE prices — helping users learn and test strategies without risking real money.",
+            tags: ["React Native", "MongoDB", "Next.js"],
+            period: "Ongoing",
+            icon: "package",
+            logo: "/logo/sprout.webp",
+        },
+        {
             title: "TableMint",
             description:
                 "Developing an NPM package to quickly convert API data into production ready tables.",
@@ -25,7 +33,7 @@ export const dashboardConfig = {
             icon: "package",
         },
         {
-            title: "AdsOverAi",
+            title: "AdsOverAI",
             description: "Handling full cycle development for an AI-native ad network that monetizes chat platforms.",
             tags: ["AI", "AdTech"],
             period: "Aug 2025 - Present",
@@ -42,7 +50,7 @@ export const dashboardConfig = {
     ],
     experience: [
         {
-            company: "AdsOverAi",
+            company: "AdsOverAI",
             role: "Software Developer",
             period: "Aug 2025 - Present",
             description: "Handling full cycle development for an AI-native ad network that monetizes chat platforms.",
@@ -156,7 +164,7 @@ export const dashboardConfig = {
             status: "Recently Completed",
             statusColor:
                 "bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400",
-            liveUrl: "https://github.com/Abh1noob/trader-pro",
+            liveUrl: "https://github.com/Abh1noob/trader.pro-fe",
             caseStudyUrl: "/projects/trader-pro",
             impact: "Simulates live markets",
         },
