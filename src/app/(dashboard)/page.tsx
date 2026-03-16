@@ -5,6 +5,7 @@ import CurrentWorkWidget from "./widgets/current-work";
 import ProjectsWidget from "./widgets/project";
 import BlogPreviewWidget from "./widgets/blog-preview";
 import SkillsProgressWidget from "./widgets/skill-progress";
+import ConstellationWidget from "./widgets/constellation";
 
 export default function DashboardPage() {
   return (
@@ -12,6 +13,7 @@ export default function DashboardPage() {
       <main className="container mx-auto p-4 sm:p-6 md:p-8 ">
         <HeroSection />
         <QuickStartWidget />
+        <ConstellationWidget />
         <CurrentWorkWidget />
         <ProjectsWidget />
         <div className="grid gap-8 lg:grid-cols-2">
