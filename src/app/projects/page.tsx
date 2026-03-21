@@ -20,12 +20,10 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { Project, projectsConfig } from "@/config/projects";
 
 const ProjectsShowcase = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("all");
 
   const projects = projectsConfig.projects;
   const uiText = projectsConfig.ui;
@@ -38,10 +36,7 @@ const ProjectsShowcase = () => {
         tech.toLowerCase().includes(searchTerm.toLowerCase())
       );
 
-    const matchesCategory =
-      selectedCategory === "all" || project.category === selectedCategory;
-
-    return matchesSearch && matchesCategory;
+    return matchesSearch;
   });
 
   const getStatusColor = (status: string) => {
@@ -193,13 +188,7 @@ const ProjectsShowcase = () => {
           </div>
         </div>
 
-        {/* Category Tabs */}
-        <Tabs
-          value={selectedCategory}
-          onValueChange={setSelectedCategory}
-          className="mb-8"
-        >
-          <TabsContent value={selectedCategory} className="mt-6">
+        <div className="mt-6 mb-8">
             {filteredProjects.length === 0 ? (
               <Card>
                 <CardContent className="text-center py-16">
@@ -219,8 +208,7 @@ const ProjectsShowcase = () => {
                 ))}
               </div>
             )}
-          </TabsContent>
-        </Tabs>
+        </div>
       </div>
     </div>
   );
