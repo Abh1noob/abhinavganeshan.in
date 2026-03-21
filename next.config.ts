@@ -1,29 +1,17 @@
 import type { NextConfig } from "next";
+import { dashboardConfig } from "./src/config/dashboard";
+
+const certificateRedirects = dashboardConfig.experience
+  .filter((experience) => experience.certificateSlug && experience.certificateFile)
+  .map((experience) => ({
+    source: `/certificate/${experience.certificateSlug}`,
+    destination: `/certificates/${encodeURIComponent(experience.certificateFile as string)}`,
+    permanent: false,
+  }));
 
 const nextConfig: NextConfig = {
   async redirects() {
-    return [
-      {
-        source: "/certificate/adobe",
-        destination: "/certificates/Adobe Certificate.pdf",
-        permanent: false,
-      },
-      {
-        source: "/certificate/warbler",
-        destination: "/certificates/Warbler Certificate.pdf",
-        permanent: false,
-      },
-      {
-        source: "/certificate/stride",
-        destination: "/certificates/Stride Certificate.pdf",
-        permanent: false,
-      },
-      {
-        source: "/certificate/peritys",
-        destination: "/certificates/Peritys Certificate.pdf",
-        permanent: false,
-      },
-    ];
+    return certificateRedirects;
   },
   async rewrites() {
     return [

@@ -16,20 +16,20 @@ const HeroSection = () => {
         {/* Avatar + action buttons row */}
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between -mt-10 sm:-mt-14 mb-4">
           <Avatar className="h-20 w-20 sm:h-28 sm:w-28 border-4 border-card shadow-xl">
-            <AvatarImage src={hero.avatar} alt="@abhinavganeshan" />
+            <AvatarImage src={hero.avatar} alt={hero.avatarAlt} />
             <AvatarFallback className="text-xl">{hero.avatarFallback}</AvatarFallback>
           </Avatar>
           <div className="flex flex-wrap gap-2 mt-4 sm:mt-0 sm:pb-1">
             <Button asChild size="sm">
               <a href={hero.resumeUrl} className="gap-2">
                 <Download className="h-4 w-4" />
-                Resume
+                {hero.actions.resumeLabel}
               </a>
             </Button>
             <Button variant="outline" size="sm" asChild>
               <a href={`mailto:${hero.contact.email}`} className="gap-2">
                 <Mail className="h-4 w-4" />
-                Contact
+                {hero.actions.contactLabel}
               </a>
             </Button>
             <Button variant="ghost" size="icon" className="h-8 w-8" asChild>

@@ -13,15 +13,16 @@ import { Zap, GraduationCap } from "lucide-react";
 
 const SkillsProgressWidget = () => {
   const skills = dashboardConfig.skills;
+  const widgetContent = dashboardConfig.widgets.skills;
 
   return (
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Zap className="h-5 w-5" />
-          Core Strengths
+          {widgetContent.title}
         </CardTitle>
-        <CardDescription>Technical focus areas and proficiency</CardDescription>
+        <CardDescription>{widgetContent.description}</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">

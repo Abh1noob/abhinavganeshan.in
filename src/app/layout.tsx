@@ -18,6 +18,7 @@ import { Toaster } from "sonner";
 import { StartupToast } from "@/components/startup-toast";
 import React from "react";
 import Script from "next/script";
+import { siteConfig } from "@/config/site";
 
 // Fonts
 const geistSans = Geist({
@@ -31,9 +32,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Abhinav Ganeshan's Portfolio",
-  description:
-    "Portfolio showcasing Abhinav Ganeshan's web development projects and experience.",
+  title: siteConfig.metadata.title,
+  description: siteConfig.metadata.description,
 };
 
 export default function RootLayout({
@@ -48,14 +48,14 @@ export default function RootLayout({
       >
         <Script
           async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9007034455335797"
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${siteConfig.analytics.googleAdsClient}`}
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
 
         <Script
           async
-          src="https://www.googletagmanager.com/gtag/js?id=G-7Z2BVRYHGN"
+          src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.analytics.googleAnalyticsId}`}
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -64,7 +64,7 @@ export default function RootLayout({
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
-            gtag('config', 'G-7Z2BVRYHGN');
+            gtag('config', '${siteConfig.analytics.googleAnalyticsId}');
           `}
         </Script>
         <ThemeProvider>

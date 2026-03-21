@@ -28,6 +28,7 @@ const ProjectsShowcase = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   const projects = projectsConfig.projects;
+  const uiText = projectsConfig.ui;
 
   const filteredProjects = projects.filter((project) => {
     const matchesSearch =
@@ -89,7 +90,9 @@ const ProjectsShowcase = () => {
                     project.status
                   )}`}
                 >
-                  {project.status === "active" ? "Active" : "Completed"}
+                  {project.status === "active"
+                    ? uiText.statusLabels.active
+                    : uiText.statusLabels.completed}
                 </div>
               )}
             </div>
@@ -182,7 +185,7 @@ const ProjectsShowcase = () => {
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
-              placeholder="Search projects, technologies, or descriptions..."
+              placeholder={uiText.searchPlaceholder}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-10"
@@ -202,10 +205,10 @@ const ProjectsShowcase = () => {
                 <CardContent className="text-center py-16">
                   <Code2 className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
                   <h3 className="text-lg font-semibold mb-2">
-                    No projects found
+                    {uiText.noResultsTitle}
                   </h3>
                   <p className="text-muted-foreground">
-                    Try adjusting your search terms or category filter
+                    {uiText.noResultsDescription}
                   </p>
                 </CardContent>
               </Card>

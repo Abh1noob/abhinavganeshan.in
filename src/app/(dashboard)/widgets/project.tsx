@@ -8,17 +8,18 @@ import { ArrowUpRight, ExternalLink } from "lucide-react";
 
 const ProjectsWidget = () => {
   const projects = dashboardConfig.projects;
+  const widgetContent = dashboardConfig.widgets.projects;
 
   return (
     <div className="mb-8">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="text-2xl font-semibold">Featured Projects</h2>
-          <p className="text-muted-foreground">Recent work and contributions</p>
+          <h2 className="text-2xl font-semibold">{widgetContent.title}</h2>
+          <p className="text-muted-foreground">{widgetContent.description}</p>
         </div>
         <Button variant="outline" size="sm" asChild>
           <a href="/projects" className="gap-2">
-            View All <ArrowUpRight className="h-4 w-4" />
+            {widgetContent.viewAllButton} <ArrowUpRight className="h-4 w-4" />
           </a>
         </Button>
       </div>
@@ -69,11 +70,11 @@ const ProjectsWidget = () => {
                         className="gap-1"
                       >
                         <ExternalLink className="h-3 w-3" />
-                        Live
+                        {widgetContent.liveButton}
                       </a>
                     </Button>
                     <Button size="sm" asChild>
-                      <SheetTrigger className="cursor-pointer">Details</SheetTrigger>
+                      <SheetTrigger className="cursor-pointer">{widgetContent.detailsButton}</SheetTrigger>
                     </Button>
                   </div>
                 </div>

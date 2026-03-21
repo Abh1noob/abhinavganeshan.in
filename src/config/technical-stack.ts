@@ -1,4 +1,9 @@
 export const techStackConfig = {
+  metadata: {
+    title: "Technical Stack - Abhinav Ganeshan",
+    description:
+      "Complete overview of programming languages, frameworks, tools, and technologies I work with.",
+  },
   header: {
     title: "Technical Stack",
     description: "A comprehensive overview of the technologies, frameworks, and tools I use",

@@ -1,5 +1,7 @@
-const GQL_ENDPOINT = "https://gql.hashnode.com";
-const PUBLICATION_HOST = "abh1noob.hashnode.dev";
+import { siteConfig } from "@/config/site";
+
+const GQL_ENDPOINT = siteConfig.integrations.hashnode.graphqlEndpoint;
+const PUBLICATION_HOST = siteConfig.integrations.hashnode.publicationHost;
 
 export interface Post {
   id: string;

@@ -7,6 +7,7 @@ import {
     SheetTitle,
 } from "@/components/ui/sheet";
 import { ExternalLink, Github } from "lucide-react";
+import { projectsConfig } from "@/config/projects";
 
 interface Project {
     title: string;
@@ -24,6 +25,8 @@ interface ProjectDetailsProps {
 }
 
 export function ProjectDetails({ project }: ProjectDetailsProps) {
+    const detailsPanel = projectsConfig.ui.detailsPanel;
+
     return (
         <SheetContent className="overflow-y-auto sm:max-w-xl">
             <SheetHeader>
@@ -43,21 +46,21 @@ export function ProjectDetails({ project }: ProjectDetailsProps) {
             <div className="mt-6 space-y-6">
                 <div>
                     <h3 className="text-sm font-medium text-muted-foreground mb-2">
-                        Overview
+                        {detailsPanel.overviewLabel}
                     </h3>
                     <p className="text-sm leading-relaxed">{project.description}</p>
                 </div>
 
                 <div>
                     <h3 className="text-sm font-medium text-muted-foreground mb-2">
-                        Impact
+                        {detailsPanel.impactLabel}
                     </h3>
                     <p className="text-sm font-medium">{project.impact}</p>
                 </div>
 
                 <div>
                     <h3 className="text-sm font-medium text-muted-foreground mb-2">
-                        Tech Stack
+                        {detailsPanel.techStackLabel}
                     </h3>
                     <div className="flex flex-wrap gap-2">
                         {project.tech.map((t) => (
@@ -77,7 +80,7 @@ export function ProjectDetails({ project }: ProjectDetailsProps) {
                                 rel="noopener noreferrer"
                             >
                                 <ExternalLink className="mr-2 h-4 w-4" />
-                                Live Demo
+                                {detailsPanel.liveDemoButton}
                             </a>
                         </Button>
                     )}
@@ -89,7 +92,7 @@ export function ProjectDetails({ project }: ProjectDetailsProps) {
                             rel="noopener noreferrer"
                         >
                             <Github className="mr-2 h-4 w-4" />
-                            Source / Details
+                            {detailsPanel.sourceDetailsButton}
                         </a>
                     </Button>
                 </div>

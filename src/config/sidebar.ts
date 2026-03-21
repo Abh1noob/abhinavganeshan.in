@@ -9,11 +9,14 @@ import {
   FileDown,
   type LucideIcon,
 } from "lucide-react";
+import { dashboardConfig } from "@/config/dashboard";
 
 interface UserProfile {
   name: string;
   email: string;
   avatar: string;
+  monogram: string;
+  status: string;
 }
 
 interface NavSubItem {
@@ -38,13 +41,21 @@ interface NavSecondaryItem {
 
 export const sidebarData: {
   user: UserProfile;
+  labels: {
+    mainNavigation: string;
+  };
   navMain: NavItem[];
   navSecondary: NavSecondaryItem[];
 } = {
   user: {
-    name: "Abhinav Ganeshan Kalpathy",
-    email: "abhinavganeshank@gmail.com",
-    avatar: "/avatars/abhinav.jpg",
+    name: dashboardConfig.hero.name,
+    email: dashboardConfig.hero.contact.email,
+    avatar: dashboardConfig.hero.avatar,
+    monogram: dashboardConfig.hero.avatarFallback,
+    status: dashboardConfig.hero.status,
+  },
+  labels: {
+    mainNavigation: "Navigation",
   },
   navMain: [
     {

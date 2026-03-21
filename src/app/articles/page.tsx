@@ -11,14 +11,17 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, ArrowRight, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { articlesConfig } from "@/config/articles";
+import { siteConfig } from "@/config/site";
 
 export const metadata = {
-    title: "Articles | Abhinav Ganeshan",
-    description: "Technical articles and tutorials on Web Development, Cloud Computing, and more.",
+    title: articlesConfig.metadata.title,
+    description: articlesConfig.metadata.description,
 };
 
 export default async function ArticlesPage() {
     const { edges: posts } = await getPosts(20);
+    const dateLocale = siteConfig.ui.dateLocale;
 
     return (
         <div className="min-h-screen bg-background">
@@ -29,9 +32,9 @@ export default async function ArticlesPage() {
                             <FileText className="h-6 w-6 text-primary" />
                         </div>
                         <div>
-                            <h1 className="text-3xl font-bold">Articles</h1>
+                            <h1 className="text-3xl font-bold">{articlesConfig.page.title}</h1>
                             <p className="text-muted-foreground">
-                                Thoughts on software engineering, cloud architecture, and building products.
+                                {articlesConfig.page.description}
                             </p>
                         </div>
                     </div>
@@ -76,7 +79,7 @@ export default async function ArticlesPage() {
                                         <div className="flex items-center gap-4">
                                             <div className="flex items-center gap-1">
                                                 <Calendar className="h-4 w-4" />
-                                                {new Date(post.publishedAt).toLocaleDateString("en-US", {
+                                                {new Date(post.publishedAt).toLocaleDateString(dateLocale, {
                                                     month: "short",
                                                     day: "numeric",
                                                     year: "numeric",
@@ -84,7 +87,7 @@ export default async function ArticlesPage() {
                                             </div>
                                             <div className="flex items-center gap-1">
                                                 <Clock className="h-4 w-4" />
-                                                {post.readTimeInMinutes} min read
+                                                {post.readTimeInMinutes} {articlesConfig.page.readTimeSuffix}
                                             </div>
                                         </div>
                                     </div>
@@ -93,7 +96,7 @@ export default async function ArticlesPage() {
                             <CardFooter className="pt-0">
                                 <Button variant="ghost" className="w-full justify-between group/btn px-0 hover:bg-transparent hover:text-primary" asChild>
                                     <Link href={`/articles/${post.slug}`}>
-                                        Read Article
+                                        {articlesConfig.page.readArticleButton}
                                         <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
                                     </Link>
                                 </Button>

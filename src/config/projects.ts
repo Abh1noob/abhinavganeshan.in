@@ -12,9 +12,30 @@ export interface Project {
 }
 
 export const projectsConfig = {
+  metadata: {
+    title: "Projects Portfolio | Abhinav Ganeshan",
+    description:
+      "A comprehensive collection of development work, live projects, and engineering contributions.",
+  },
   header: {
     title: "Projects Portfolio",
     description: "A comprehensive collection of my development work and contributions"
+  },
+  ui: {
+    searchPlaceholder: "Search projects, technologies, or descriptions...",
+    noResultsTitle: "No projects found",
+    noResultsDescription: "Try adjusting your search terms or category filter",
+    statusLabels: {
+      active: "Active",
+      completed: "Completed",
+    },
+    detailsPanel: {
+      overviewLabel: "Overview",
+      impactLabel: "Impact",
+      techStackLabel: "Tech Stack",
+      liveDemoButton: "Live Demo",
+      sourceDetailsButton: "Source / Details",
+    },
   },
   projects: [
     {

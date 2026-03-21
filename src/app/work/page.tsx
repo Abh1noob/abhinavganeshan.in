@@ -12,11 +12,11 @@ import { dashboardConfig } from "@/config/dashboard";
 import { Award, Briefcase, Calendar, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { Metadata } from "next";
+import { workConfig } from "@/config/work";
 
 export const metadata: Metadata = {
-  title: "Work Timeline - Abhinav Ganeshan",
-  description:
-    "Complete professional timeline showcasing my experience, internships, and current work projects.",
+  title: workConfig.metadata.title,
+  description: workConfig.metadata.description,
 };
 
 export default function WorkPage() {
@@ -30,7 +30,7 @@ export default function WorkPage() {
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6 flex items-center gap-2">
             <Briefcase className="h-6 w-6" />
-            Current Work
+            {workConfig.page.currentWorkTitle}
           </h2>
           <div className="grid gap-6 md:grid-cols-2">
             {currentWork.map((work, index) => (
@@ -64,7 +64,7 @@ export default function WorkPage() {
         <section>
           <h2 className="text-2xl font-semibold mb-6 flex items-center gap-2">
             <Calendar className="h-6 w-6" />
-            Professional Experience
+            {workConfig.page.professionalExperienceTitle}
           </h2>
           <div className="space-y-6">
             {experiences.map((exp, index) => (
@@ -100,7 +100,7 @@ export default function WorkPage() {
                     <Button variant="outline" size="sm" asChild>
                       <Link href={`/work/${exp.certificateSlug}`} className="gap-2">
                         <Award className="h-4 w-4" />
-                        View Certificate
+                        {workConfig.page.viewCertificateButton}
                       </Link>
                     </Button>
                   )}
@@ -119,17 +119,16 @@ export default function WorkPage() {
         <section className="mt-12 pt-8 border-t">
           <Card>
             <CardHeader>
-              <CardTitle>Let&apos;s Connect</CardTitle>
+              <CardTitle>{workConfig.contact.title}</CardTitle>
               <CardDescription>
-                Interested in working together or learning more about my
-                experience?
+                {workConfig.contact.description}
               </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="flex flex-wrap gap-4">
                 <Button asChild>
                   <a href={`mailto:${dashboardConfig.hero.contact.email}`}>
-                    Get in Touch
+                    {workConfig.contact.getInTouchButton}
                   </a>
                 </Button>
                 <Button variant="outline" asChild>
@@ -140,7 +139,7 @@ export default function WorkPage() {
                     className="gap-2"
                   >
                     <ExternalLink className="h-4 w-4" />
-                    LinkedIn
+                    {workConfig.contact.linkedinButton}
                   </a>
                 </Button>
                 <Button variant="outline" asChild>
@@ -151,7 +150,7 @@ export default function WorkPage() {
                     className="gap-2"
                   >
                     <ExternalLink className="h-4 w-4" />
-                    GitHub
+                    {workConfig.contact.githubButton}
                   </a>
                 </Button>
               </div>

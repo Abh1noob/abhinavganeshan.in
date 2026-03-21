@@ -21,6 +21,8 @@ const iconMap = {
 };
 
 const CurrentWorkWidget = () => {
+  const widgetContent = dashboardConfig.widgets.currentWork;
+
   return (
     <Card className="mb-8">
       <CardHeader>
@@ -28,9 +30,9 @@ const CurrentWorkWidget = () => {
         <div className="animate-pulse">
             <Code2 className="h-4 w-4 text-green-500" />
         </div>
-          <CardTitle>What I&apos;m Working On</CardTitle>
+          <CardTitle>{widgetContent.title}</CardTitle>
         </div>
-        <CardDescription>Current projects and focus areas</CardDescription>
+        <CardDescription>{widgetContent.description}</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="space-y-6">

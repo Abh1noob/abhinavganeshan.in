@@ -1,11 +1,14 @@
 import { getPost } from "@/lib/hashnode";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, Calendar, Clock, ArrowLeft } from "lucide-react";
+import { Calendar, Clock } from "lucide-react";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
+import { articlesConfig } from "@/config/articles";
+import { dashboardConfig } from "@/config/dashboard";
+import { siteConfig } from "@/config/site";
 
 interface Props {
     params: Promise<{ slug: string }>;
@@ -17,12 +20,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     if (!post) {
         return {
-            title: "Article Not Found",
+            title: articlesConfig.articlePage.notFoundTitle,
         }
     }
 
     return {
-        title: `${post.title} | Abhinav Ganeshan`,
+        title: `${post.title} | ${articlesConfig.articlePage.titleSuffix}`,
         description: post.brief,
         openGraph: {
             images: post.coverImage?.url ? [post.coverImage.url] : []
@@ -33,6 +36,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ArticlePage({ params }: Props) {
     const { slug } = await params;
     const post = await getPost(slug);
+    const dateLocale = siteConfig.ui.dateLocale;
+    const author = articlesConfig.articlePage.author;
+    const hero = dashboardConfig.hero;
 
     if (!post) {
         notFound();
@@ -48,7 +54,7 @@ export default async function ArticlePage({ params }: Props) {
                     <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 text-sm text-muted-foreground">
                         <div className="flex items-center gap-1">
                             <Calendar className="h-4 w-4" />
-                            {new Date(post.publishedAt).toLocaleDateString("en-US", {
+                            {new Date(post.publishedAt).toLocaleDateString(dateLocale, {
                                 year: "numeric",
                                 month: "long",
                                 day: "numeric",
@@ -57,7 +63,7 @@ export default async function ArticlePage({ params }: Props) {
                         <span>•</span>
                         <div className="flex items-center gap-1">
                             <Clock className="h-4 w-4" />
-                            {post.readTimeInMinutes} min read
+                            {post.readTimeInMinutes} {articlesConfig.page.readTimeSuffix}
                         </div>
                     </div>
 
@@ -102,17 +108,17 @@ export default async function ArticlePage({ params }: Props) {
                 <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-muted/30 p-8 rounded-xl border">
                     <div className="flex items-center gap-4">
                         <Avatar className="h-16 w-16 border-2 border-background">
-                            <AvatarImage src="/avatars/abhinav.jpg" alt="Abhinav Ganeshan" />
-                            <AvatarFallback>AG</AvatarFallback>
+                            <AvatarImage src={hero.avatar} alt={hero.avatarAlt} />
+                            <AvatarFallback>{hero.avatarFallback}</AvatarFallback>
                         </Avatar>
                         <div>
-                            <h3 className="font-semibold text-lg">Abhinav Ganeshan</h3>
-                            <p className="text-sm text-muted-foreground">Full Stack Developer & Cloud Architect</p>
+                            <h3 className="font-semibold text-lg">{author.name}</h3>
+                            <p className="text-sm text-muted-foreground">{author.role}</p>
                         </div>
                     </div>
                     <div className="flex gap-2">
                         <Button variant="outline" asChild>
-                            <Link href="/articles">Read More Articles</Link>
+                            <Link href="/articles">{author.readMoreArticlesButton}</Link>
                         </Button>
                     </div>
                 </div>

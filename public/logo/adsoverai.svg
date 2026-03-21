@@ -1,0 +1,19 @@
+<svg width="450" height="450" viewBox="0 0 450 450" fill="none" xmlns="http://www.w3.org/2000/svg"
+    class="w-full h-full">
+    <rect width="450" height="450" rx="102" fill="white"></rect>
+    <mask id="mask0_landing" maskUnits="userSpaceOnUse" x="118" y="56" width="215" height="194">
+        <rect x="118" y="56" width="215" height="194" fill="#D9D9D9"></rect>
+    </mask>
+    <g mask="url(#mask0_landing)">
+        <path d="M225.93 -8.66666L333.551 249.545H118.309L225.93 -8.66666Z" fill="#2E2E2E"></path>
+        <path d="M225.5 129L249.333 202.092H201.667L225.5 129Z" fill="white"></path>
+    </g>
+    <path d="M225.5 250H118V298H225.5V250Z" fill="#3184EF"></path>
+    <path opacity="0.6" d="M225.5 298H118V345H225.5V298Z" fill="#3184EF"></path>
+    <path opacity="0.3" d="M225.5 345H118V393H225.5V345Z" fill="#3184EF"></path>
+    <path opacity="0.8" d="M279.68 250H225.5V298H279.68V250Z" fill="#3184EF"></path>
+    <path opacity="0.5" d="M279.68 298H225.5V345H279.68V298Z" fill="#3184EF"></path>
+    <path opacity="0.2" d="M279.68 345H225.5V393H279.68V345Z" fill="#3184EF"></path>
+    <path opacity="0.5" d="M333 250H279.68V298H333V250Z" fill="#3184EF"></path>
+    <path opacity="0.2" d="M333 298H279.68V345H333V298Z" fill="#3184EF"></path>
+</svg>

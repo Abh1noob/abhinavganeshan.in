@@ -23,13 +23,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarMenuButton size="lg" asChild>
               <a href="/">
                 <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground text-sm font-bold">
-                  AG
+                  {sidebarData.user.monogram}
                 </div>
-                <div className="flex flex-col gap-0.5 leading-none">
-                  <span className="font-semibold text-sm">Abhinav Ganeshan</span>
-                  <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                    <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
-                    Available for new roles
+                <div className="grid flex-1 text-left text-sm leading-tight">
+                  <span className="truncate font-semibold">{sidebarData.user.name}</span>
+                  <span className="flex items-center gap-1.5 text-xs text-muted-foreground truncate">
+                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-green-500" />
+                    <span className="truncate">{sidebarData.user.status}</span>
                   </span>
                 </div>
               </a>
@@ -38,7 +38,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={sidebarData.navMain} />
+        <NavMain label={sidebarData.labels.mainNavigation} items={sidebarData.navMain} />
         <NavSecondary items={sidebarData.navSecondary} className="mt-auto" />
       </SidebarContent>
     </Sidebar>

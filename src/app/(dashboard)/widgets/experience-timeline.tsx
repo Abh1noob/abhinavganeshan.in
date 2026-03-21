@@ -13,15 +13,16 @@ import Link from "next/link";
 
 const ExperienceTimelineWidget = () => {
   const experiences = dashboardConfig.experience;
+  const widgetContent = dashboardConfig.widgets.experience;
 
   return (
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <TrendingUp className="h-5 w-5" />
-          Professional Journey
+          {widgetContent.title}
         </CardTitle>
-        <CardDescription>Recent experience and growth</CardDescription>
+        <CardDescription>{widgetContent.description}</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="space-y-6">
@@ -58,7 +59,7 @@ const ExperienceTimelineWidget = () => {
           <Button variant="outline" className="w-full" asChild>
             <Link href="/work" className="gap-2">
               <Briefcase className="h-4 w-4" />
-              View Complete Timeline
+              {widgetContent.viewTimelineButton}
             </Link>
           </Button>
         </div>

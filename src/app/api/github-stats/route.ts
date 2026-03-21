@@ -1,6 +1,7 @@
 // Configure GITHUB_TOKEN in .env file
 
 import { NextResponse } from "next/server";
+import { siteConfig } from "@/config/site";
 
 interface GitHubStats {
   totalStars: number;
@@ -18,7 +19,7 @@ interface GitHubStats {
 }
 
 const GITHUB_GRAPHQL = "https://api.github.com/graphql";
-const USERNAME = "Abh1noob";
+const USERNAME = siteConfig.integrations.github.username;
 
 async function fetchGitHubStats(): Promise<GitHubStats> {
   const token = process.env.GITHUB_TOKEN;
@@ -408,7 +409,7 @@ function renderSVG(stats: GitHubStats): string {
   ${divider(396)}
 
   <!-- Footer -->
-  <text x="${W / 2}" y="423" fill="#334155" font-family="${FONT}" font-size="10" text-anchor="middle">generated from abhinavganeshan.in</text>
+  <text x="${W / 2}" y="423" fill="#334155" font-family="${FONT}" font-size="10" text-anchor="middle">${siteConfig.apiText.githubStats.generatedFrom}</text>
 
    <!-- Shooting star -->
     <g opacity="0">
@@ -448,7 +449,7 @@ export async function GET() {
   } catch (err: any) {
     const errorSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 200" width="900" height="200">
       <rect width="900" height="200" rx="12" fill="#0a0e1a"/>
-      <text x="450" y="105" fill="#64748b" font-family="monospace" font-size="14" text-anchor="middle">stats are taking a nap — check back soon</text>
+      <text x="450" y="105" fill="#64748b" font-family="monospace" font-size="14" text-anchor="middle">${siteConfig.apiText.githubStats.fallbackMessage}</text>
     </svg>`;
     return new NextResponse(errorSvg, {
       headers: { "Content-Type": "image/svg+xml" },

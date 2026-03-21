@@ -32,11 +32,14 @@ import {
 } from "@/components/ui/command";
 import { dashboardConfig } from "@/config/dashboard";
 import { toast } from "sonner";
+import { siteConfig } from "@/config/site";
 
 export function CommandMenu() {
     const [open, setOpen] = React.useState(false);
     const { setTheme } = useTheme();
     const router = useRouter();
+    const commandConfig = siteConfig.ui.commandMenu;
+    const themeLabels = siteConfig.ui.themeToggle;
 
     React.useEffect(() => {
         const down = (e: KeyboardEvent) => {
@@ -61,56 +64,56 @@ export function CommandMenu() {
                 onClick={() => setOpen(true)}
                 className="fixed bottom-4 right-4 z-50 flex items-center gap-2 rounded-lg border bg-background px-3 py-1.5 text-xs font-medium text-muted-foreground shadow-sm xl:hidden cursor-pointer hover:bg-accent transition-colors"
             >
-                <span className="text-xs">⌘K</span>
+                <span className="text-xs">{commandConfig.mobileShortcutLabel}</span>
             </button>
             <CommandDialog open={open} onOpenChange={setOpen}>
-                <CommandInput placeholder="Type a command or search..." />
+                <CommandInput placeholder={commandConfig.inputPlaceholder} />
                 <CommandList>
-                    <CommandEmpty>No results found.</CommandEmpty>
-                    <CommandGroup heading="Pages">
+                    <CommandEmpty>{commandConfig.emptyText}</CommandEmpty>
+                    <CommandGroup heading={commandConfig.headings.pages}>
                         <CommandItem onSelect={() => runCommand(() => router.push("/"))}>
                             <Home className="mr-2 h-4 w-4" />
-                            <span>Overview</span>
+                            <span>{commandConfig.pages.overview}</span>
                         </CommandItem>
                         <CommandItem
                             onSelect={() => runCommand(() => router.push("/projects"))}
                         >
                             <FolderKanban className="mr-2 h-4 w-4" />
-                            <span>Projects</span>
+                            <span>{commandConfig.pages.projects}</span>
                         </CommandItem>
                         <CommandItem
                             onSelect={() => runCommand(() => router.push("/work"))}
                         >
                             <Briefcase className="mr-2 h-4 w-4" />
-                            <span>Work & Experience</span>
+                            <span>{commandConfig.pages.work}</span>
                         </CommandItem>
                         <CommandItem
                             onSelect={() => runCommand(() => router.push("/articles"))}
                         >
                             <FileText className="mr-2 h-4 w-4" />
-                            <span>Articles</span>
+                            <span>{commandConfig.pages.articles}</span>
                         </CommandItem>
                         <CommandItem
                             onSelect={() => runCommand(() => router.push("/profile/education"))}
                         >
                             <GraduationCap className="mr-2 h-4 w-4" />
-                            <span>Education</span>
+                            <span>{commandConfig.pages.education}</span>
                         </CommandItem>
                         <CommandItem
                             onSelect={() => runCommand(() => router.push("/profile/technical-stack"))}
                         >
                             <Code className="mr-2 h-4 w-4" />
-                            <span>Skills & Technologies</span>
+                            <span>{commandConfig.pages.technicalStack}</span>
                         </CommandItem>
                         <CommandItem
                             onSelect={() => runCommand(() => router.push("/resume"))}
                         >
                             <FileDown className="mr-2 h-4 w-4" />
-                            <span>Resume</span>
+                            <span>{commandConfig.pages.resume}</span>
                         </CommandItem>
                     </CommandGroup>
                     <CommandSeparator />
-                    <CommandGroup heading="Social">
+                    <CommandGroup heading={commandConfig.headings.social}>
                         <CommandItem
                             onSelect={() =>
                                 runCommand(() =>
@@ -122,7 +125,7 @@ export function CommandMenu() {
                             }
                         >
                             <Github className="mr-2 h-4 w-4" />
-                            <span>GitHub</span>
+                            <span>{commandConfig.social.github}</span>
                         </CommandItem>
                         <CommandItem
                             onSelect={() =>
@@ -132,34 +135,34 @@ export function CommandMenu() {
                             }
                         >
                             <Linkedin className="mr-2 h-4 w-4" />
-                            <span>LinkedIn</span>
+                            <span>{commandConfig.social.linkedin}</span>
                         </CommandItem>
                         <CommandItem
                             onSelect={() => {
                                 runCommand(() => {
                                     navigator.clipboard.writeText(dashboardConfig.hero.contact.email);
-                                    toast("Email copied to clipboard");
+                                    toast(commandConfig.social.copyEmailToast);
                                 })
                             }}
                         >
                             <Copy className="mr-2 h-4 w-4" />
-                            <span>Copy Email</span>
-                            <CommandShortcut>⌘C</CommandShortcut>
+                            <span>{commandConfig.social.copyEmail}</span>
+                            <CommandShortcut>{commandConfig.shortcuts.copyEmail}</CommandShortcut>
                         </CommandItem>
                     </CommandGroup>
                     <CommandSeparator />
-                    <CommandGroup heading="Theme">
+                    <CommandGroup heading={commandConfig.headings.theme}>
                         <CommandItem onSelect={() => runCommand(() => setTheme("light"))}>
                             <Sun className="mr-2 h-4 w-4" />
-                            <span>Light</span>
+                            <span>{themeLabels.lightLabel}</span>
                         </CommandItem>
                         <CommandItem onSelect={() => runCommand(() => setTheme("dark"))}>
                             <Moon className="mr-2 h-4 w-4" />
-                            <span>Dark</span>
+                            <span>{themeLabels.darkLabel}</span>
                         </CommandItem>
                         <CommandItem onSelect={() => runCommand(() => setTheme("system"))}>
                             <Laptop className="mr-2 h-4 w-4" />
-                            <span>System</span>
+                            <span>{themeLabels.systemLabel}</span>
                         </CommandItem>
                     </CommandGroup>
                 </CommandList>

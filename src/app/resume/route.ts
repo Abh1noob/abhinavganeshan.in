@@ -1,16 +1,18 @@
+import { siteConfig } from "@/config/site";
+
 const driveUrl = `https://drive.google.com/uc?export=download&id=1xQ3f863AgDXsqW9NisKfZbgBO6jV4ENr`;
 
 export async function GET() {
   const res = await fetch(driveUrl);
 
   if (!res.ok || !res.body) {
-    return new Response("Failed to fetch PDF", { status: 502 });
+    return new Response(siteConfig.resume.fetchErrorMessage, { status: 502 });
   }
 
   return new Response(res.body, {
     headers: {
       "Content-Type": "application/pdf",
-      "Content-Disposition": "inline; filename=Abhinav-Resume.pdf",
+      "Content-Disposition": `inline; filename=${siteConfig.resume.pdfFileName}`,
     },
   });
 }

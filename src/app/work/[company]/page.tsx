@@ -1,13 +1,12 @@
 import React from "react";
+import { dashboardConfig } from "@/config/dashboard";
+import { workConfig } from "@/config/work";
 
 // Generate static params for known companies
 export async function generateStaticParams() {
-  return [
-    { company: 'adobe' },
-    { company: 'warbler' },
-    { company: 'stride' },
-    { company: 'peritys' },
-  ];
+  return dashboardConfig.experience
+    .filter((item) => item.certificateSlug)
+    .map((item) => ({ company: item.certificateSlug }));
 }
 
 const Page = async ({ params }: { params: Promise<{ company: string }> }) => {
@@ -18,7 +17,7 @@ const Page = async ({ params }: { params: Promise<{ company: string }> }) => {
       <iframe
         src={`/certificate/${company}`}
         className="w-full h-[calc(100vh-4rem)] border-0"
-        title={`${company} certificate`}
+        title={`${company} ${workConfig.certificatePage.iframeTitleSuffix}`}
       />
     </div>
   );

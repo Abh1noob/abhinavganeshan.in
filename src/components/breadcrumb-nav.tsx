@@ -10,9 +10,11 @@ import {
 } from "@/components/ui/breadcrumb";
 import { usePathname } from "next/navigation";
 import React from "react";
+import { siteConfig } from "@/config/site";
 
 export function BreadcrumbNav() {
   const pathname = usePathname();
+  const labels = siteConfig.ui.breadcrumbs;
 
   // Function to generate breadcrumb items based on the pathname
   const getBreadcrumbs = () => {
@@ -29,9 +31,9 @@ export function BreadcrumbNav() {
         breadcrumbs.push(
           <BreadcrumbItem key={path}>
             {isLast ? (
-              <BreadcrumbPage>Projects</BreadcrumbPage>
+              <BreadcrumbPage>{labels.projects}</BreadcrumbPage>
             ) : (
-              <BreadcrumbLink href={path}>Projects</BreadcrumbLink>
+              <BreadcrumbLink href={path}>{labels.projects}</BreadcrumbLink>
             )}
           </BreadcrumbItem>
         );
@@ -39,9 +41,9 @@ export function BreadcrumbNav() {
         breadcrumbs.push(
           <BreadcrumbItem key={path}>
             {isLast ? (
-              <BreadcrumbPage>Work Timeline</BreadcrumbPage>
+              <BreadcrumbPage>{labels.work}</BreadcrumbPage>
             ) : (
-              <BreadcrumbLink href="/work">Work Timeline</BreadcrumbLink>
+              <BreadcrumbLink href="/work">{labels.work}</BreadcrumbLink>
             )}
           </BreadcrumbItem>
         );
@@ -50,20 +52,20 @@ export function BreadcrumbNav() {
       } else if (segment === "education") {
         breadcrumbs.push(
           <BreadcrumbItem key={path}>
-            <BreadcrumbPage>Education</BreadcrumbPage>
+            <BreadcrumbPage>{labels.education}</BreadcrumbPage>
           </BreadcrumbItem>
         );
       } else if (segment === "technical-stack") {
         breadcrumbs.push(
           <BreadcrumbItem key={path}>
-            <BreadcrumbPage>Skills & Technologies</BreadcrumbPage>
+            <BreadcrumbPage>{labels.technicalStack}</BreadcrumbPage>
           </BreadcrumbItem>
         );
       } else if (path.startsWith("/work/") && segment !== "work") {
         const companyName = segment.charAt(0).toUpperCase() + segment.slice(1);
         breadcrumbs.push(
           <BreadcrumbItem key={path}>
-            <BreadcrumbPage>{companyName} — Certificate</BreadcrumbPage>
+            <BreadcrumbPage>{`${companyName} - ${labels.certificateSuffix}`}</BreadcrumbPage>
           </BreadcrumbItem>
         );
       } else if (path.startsWith("/projects/") && segment !== "projects") {
@@ -81,9 +83,9 @@ export function BreadcrumbNav() {
         breadcrumbs.push(
           <BreadcrumbItem key={path}>
             {isLast ? (
-              <BreadcrumbPage>Articles</BreadcrumbPage>
+              <BreadcrumbPage>{labels.articles}</BreadcrumbPage>
             ) : (
-              <BreadcrumbLink href="/articles">Articles</BreadcrumbLink>
+              <BreadcrumbLink href="/articles">{labels.articles}</BreadcrumbLink>
             )}
           </BreadcrumbItem>
         );
@@ -108,13 +110,13 @@ export function BreadcrumbNav() {
     if (breadcrumbs.length === 0) {
       breadcrumbs.push(
         <BreadcrumbItem key="/">
-          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          <BreadcrumbLink href="/">{labels.home}</BreadcrumbLink>
         </BreadcrumbItem>
       );
     } else {
       breadcrumbs.unshift(
         <BreadcrumbItem key="/">
-          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          <BreadcrumbLink href="/">{labels.home}</BreadcrumbLink>
         </BreadcrumbItem>
       );
     }

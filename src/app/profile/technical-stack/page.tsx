@@ -12,9 +12,8 @@ import { techStackConfig } from "@/config/technical-stack";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Technical Stack - Abhinav Ganeshan",
-  description:
-    "Complete overview of programming languages, frameworks, tools, and technologies I work with.",
+  title: techStackConfig.metadata.title,
+  description: techStackConfig.metadata.description,
 };
 
 const iconMap = {

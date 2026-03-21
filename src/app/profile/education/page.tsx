@@ -6,7 +6,13 @@ import {
   Award,
   BookCopy,
 } from "lucide-react";
-import { education } from "@/config/education";
+import { education, educationConfig } from "@/config/education";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: educationConfig.metadata.title,
+  description: educationConfig.metadata.description,
+};
 
 const EducationPage = () => {
   return (
@@ -17,9 +23,9 @@ const EducationPage = () => {
             <BookCopy className="h-6 w-6 text-primary" />
           </div>
           <div>
-            <h1 className="text-3xl font-bold">Education</h1>
+            <h1 className="text-3xl font-bold">{educationConfig.page.title}</h1>
             <p className="text-muted-foreground">
-              My academic journey and educational background
+              {educationConfig.page.description}
             </p>
           </div>
         </div>
@@ -69,7 +75,7 @@ const EducationPage = () => {
 
             <div>
               <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-2">
-                Key Highlights:
+                {educationConfig.page.highlightsLabel}
               </h4>
               <ul className="space-y-1">
                 {edu.highlights.map((highlight, idx) => (

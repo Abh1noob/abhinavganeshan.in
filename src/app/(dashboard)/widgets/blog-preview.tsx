@@ -10,16 +10,20 @@ import {
 import { FileText, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { getPosts } from "@/lib/hashnode";
+import { dashboardConfig } from "@/config/dashboard";
+import { siteConfig } from "@/config/site";
 
 const BlogPreviewWidget = async () => {
   const { edges } = await getPosts(1);
   const latestPost = edges[0]?.node;
+  const widgetContent = dashboardConfig.widgets.blog;
+  const dateLocale = siteConfig.ui.dateLocale;
 
   if (!latestPost) {
     return (
       <Card>
         <CardHeader>
-          <CardTitle>No Articles Found</CardTitle>
+          <CardTitle>{widgetContent.noArticlesTitle}</CardTitle>
         </CardHeader>
       </Card>
     )
@@ -30,10 +34,10 @@ const BlogPreviewWidget = async () => {
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <FileText className="h-5 w-5" />
-          Latest Article
+          {widgetContent.latestTitle}
         </CardTitle>
         <CardDescription>
-          Sharing insights from development experiences
+          {widgetContent.description}
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -41,14 +45,14 @@ const BlogPreviewWidget = async () => {
           <div className="space-y-3">
             <div className="flex items-center gap-2 text-xs text-muted-foreground">
               <span className="bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400 px-2 py-1 rounded-full">
-                {new Date(latestPost.publishedAt).toLocaleDateString("en-US", {
+                {new Date(latestPost.publishedAt).toLocaleDateString(dateLocale, {
                   month: "short",
                   day: "numeric",
                   year: "numeric"
                 })}
               </span>
               <span>•</span>
-              <span>{latestPost.readTimeInMinutes} min read</span>
+              <span>{latestPost.readTimeInMinutes} {widgetContent.readTimeSuffix}</span>
             </div>
 
             <Link href={`/articles/${latestPost.slug}`} className="block">
@@ -76,12 +80,12 @@ const BlogPreviewWidget = async () => {
                 href={`/articles/${latestPost.slug}`}
                 className="gap-2"
               >
-                Read Article <ArrowUpRight className="h-3 w-3" />
+                {widgetContent.readArticleButton} <ArrowUpRight className="h-3 w-3" />
               </Link>
             </Button>
             <Button variant="outline" size="sm" asChild>
               <Link href="/articles">
-                View Blog
+                {widgetContent.viewBlogButton}
               </Link>
             </Button>
           </div>

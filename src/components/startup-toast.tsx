@@ -2,9 +2,11 @@
 
 import { useEffect, useRef } from "react";
 import { toast } from "sonner";
+import { siteConfig } from "@/config/site";
 
 export function StartupToast() {
     const hasShownToast = useRef(false);
+    const { startupToast } = siteConfig.ui;
 
     useEffect(() => {
         if (hasShownToast.current) return;
@@ -13,7 +15,7 @@ export function StartupToast() {
         // Checking max-width 768px (typical tablet/mobile breakpoint)
         // and user agent for good measure
         const isMobile =
-            window.innerWidth < 768 ||
+            window.innerWidth < startupToast.mobileMaxWidth ||
             /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
         if (isMobile) {
@@ -22,15 +24,15 @@ export function StartupToast() {
         }
 
         const isMac = navigator.platform.toUpperCase().indexOf("MAC") >= 0;
-        const shortcut = isMac ? "⌘K" : "Ctrl+K";
+        const shortcut = isMac ? startupToast.macShortcut : startupToast.defaultShortcut;
 
         // Small delay to ensure UI is ready and it doesn't feel too abrupt
         setTimeout(() => {
-            toast.info(`Press ${shortcut} to quickly navigate anywhere on this site`);
+            toast.info(startupToast.messageTemplate.replace("{shortcut}", shortcut));
             hasShownToast.current = true;
-        }, 1000);
+        }, startupToast.delayMs);
 
-    }, []);
+    }, [startupToast]);
 
     return null;
 }

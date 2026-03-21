@@ -1,9 +1,10 @@
 // Configure GITHUB_TOKEN in .env file
 
 import { NextResponse } from "next/server";
+import { siteConfig } from "@/config/site";
 
 // ── Config ──────────────────────────────────────────────────────────
-const USERNAME = "Abh1noob";
+const USERNAME = siteConfig.integrations.github.username;
 const DAYS = 90;
 const WIDTH = 900;
 const HEIGHT = 400;
