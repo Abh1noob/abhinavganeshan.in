@@ -19,6 +19,7 @@ import { StartupToast } from "@/components/startup-toast";
 import React from "react";
 import Script from "next/script";
 import { siteConfig } from "@/config/site";
+import { LaunchNotification } from "@/components/launch-notification";
 
 // Fonts
 const geistSans = Geist({
@@ -82,6 +83,7 @@ export default function RootLayout({
                 </div>
                 <div className="flex items-center gap-2 px-4">
                   <SearchTrigger />
+                  <LaunchNotification />
                   <ThemeToggle />
                 </div>
               </header>

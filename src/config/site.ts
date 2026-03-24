@@ -35,6 +35,19 @@ export const siteConfig = {
       defaultShortcut: "Ctrl+K",
       messageTemplate: "Press {shortcut} to quickly navigate anywhere on this site",
     },
+    launchBanner: {
+      enabled: true,
+      badge: "New launch",
+      title: "sprout. is now live",
+      description:
+        "Paper trade on live NSE prices, test your strategies, and build confidence before entering live markets.",
+      playStoreLabel: "Play Store",
+      playStoreUrl:
+        "https://play.google.com/store/apps/details?id=com.anonymous.sprout",
+      landingPageLabel: "Landing Page",
+      landingPageUrl: "https://sprout.parklanelabs.com",
+      dismissStorageKey: "sprout-launch-banner-dismissed",
+    },
     commandMenu: {
       mobileShortcutLabel: "⌘K",
       inputPlaceholder: "Type a command or search...",
